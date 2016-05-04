@@ -2046,3 +2046,19 @@ xlabel('t [sec.]'); ylabel('amplitude');
 #### 5(b)
 __Evalutation__: Creating `mydetectorMod` did contribute to a bigger improvement.  All we have to do is detect whether the tone is passed or not.  So, we have freedom to manipulate the amplitude of whatever signal is passed and modify so that it will be clear and recognizable.  Only weakness to this new function, `mydetectorMod` will be when the constant `a` is so large that the signal is no longer distinguishable and impossible to filter it correctly.
 
+## APPENDIX A: `m`files
+- [`lab04part01.m`][1]
+- [`lab04part02.m`][2]
+- [`lab04part03.m`][3]
+- [`lab04part04.m`][4]
+- [`my_dtmf.m`][5]
+- [`mydetector.m`][6]
+- [`mydetectorMod.m`][7]
+
+[1]: https://github.com/chanhi2000/ELEN133lab/tree/master/lab/lab04sub/lab04part01.m
+[2]: https://github.com/chanhi2000/ELEN133lab/tree/master/lab/lab04sub/lab04part02.m
+[3]: https://github.com/chanhi2000/ELEN133lab/tree/master/lab/lab04sub/lab04part03.m
+[4]: https://github.com/chanhi2000/ELEN133lab/tree/master/lab/lab04sub/lab04part04.m
+[5]: https://github.com/chanhi2000/ELEN133lab/tree/master/lab/lab04sub/my_dtmf.m
+[6]: https://github.com/chanhi2000/ELEN133lab/tree/master/lab/lab04sub/mydetector.m
+[7]: https://github.com/chanhi2000/ELEN133lab/tree/master/lab/lab04sub/mydetectorMod.m

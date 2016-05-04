@@ -1,7 +1,7 @@
 # lab05sub
 
 ## OBJECTIVES:
-- Use MATLAB to help us learn the DFT and how to use it to detect DTMF tones. 
+- Use MATLAB to help us learn the DFT and how to use it to detect DTMF tones.
 - Test the selected filter using test signals similar to those generated in Laboratories 3 and 4.
 
 
@@ -18,7 +18,7 @@ In this PreLab, we will explore using the Fourier transform to identify all the 
 
 We can compute the Discrete Fourier Transform (DFT) of a signal more efficiently using a MATLAB function called `fft`. Like `freqz`, it will select samples of the continuous frequency variable for evaluation of the Fourier transform. The number of frequencies selected by the `fft` function is the same as the number of sampled data values in the signal vector. When we use `fft`, we have to make our own `fv` vector.
 
-### 1. 
+### 1.
 Read the above Background Notes and start of the PreLab and understand, as much as possible, what the `fft` will be providing for you. In MATLAB, type “`help fft`” to read about the function that will generate values of the Fourier transform at selected frequency values.
 
 ### 2.
@@ -40,14 +40,14 @@ function dial_sig = my_dtmf(tone_time, quiet_time, fs, dial_vals)
 % Note that the dialed "0" is button number 11!!!!!!
 %
 % OUTPUT:
-% - dial_sig is the vector of sampled values of the DTMF output signal 
+% - dial_sig is the vector of sampled values of the DTMF output signal
 % for the number sequence
 
 t_tone_new = 0:tone_time*fs-1;
 num = length(dial_vals);
 quiet_sig = zeros(1, fs*quiet_time);
 f_tone = [
-    697, 1209; 697, 1336; 697, 1477;... 
+    697, 1209; 697, 1336; 697, 1477;...
     770, 1209; 770, 1336; 770, 1477;...
     852, 1209; 852, 1336; 852, 1477;...
     941, 1209; 941, 1336; 941, 1477;
@@ -60,7 +60,7 @@ for ii=1:num
     hi = f_tone(dial_vals(ii),2);
     new_sig = cos( 2 * pi * lo / fs * t_tone_new)...
         + cos( 2 * pi * hi / fs * t_tone_new );
-    
+
     % normalize the output around 1
     new_sig = new_sig./abs(max(new_sig(:)));
 
@@ -69,7 +69,7 @@ end
 ```
 
 ```matlab
-%% 
+%%
 % ----- EXERCISE 1: -----
 %
 % Generate signal `testSig3` (from lab 03)
@@ -147,7 +147,7 @@ Seeing this plot and analyzing and interpreting its frequency response is much m
 ### A4.
 ![fig01t](lab03sub/lab03sub-fig01.png)
 
-The second plot is much more relatable to us. This plot maps the amplitude for frequency response.  Each peak indicates the frequency that the signal retains.  The first half shows the one-sided frequency response and the second half shows the two-sided frequency response. The second one is more visually helpful, since the plot is centered at zero, and we want to know which frequecies exist in the signal. 
+The second plot is much more relatable to us. This plot maps the amplitude for frequency response.  Each peak indicates the frequency that the signal retains.  The first half shows the one-sided frequency response and the second half shows the two-sided frequency response. The second one is more visually helpful, since the plot is centered at zero, and we want to know which frequecies exist in the signal.
 
 It's worthy to note that the peak with the highest amplitude should be one. It's at $$f=1336\:\text{Hz}$$. And there's nothing wrong about it, since the button 5 and 0 both have high tone of frequency at $$f=1336\:\text{Hz}$$
 
@@ -168,8 +168,8 @@ On this plot, use the zoom feature of the plot window to identify the horizontal
 % Test your understanding
 
 % ----- create a new signal `sig3a` -----
-n1a=1; 
-n2a=4000; 
+n1a=1;
+n2a=4000;
 sig3a = testSig3(n1a:n2a);
 
 % ----- define the following: -----
@@ -225,7 +225,7 @@ title('sig3a: higher frequency region');
 How would you characterize the shape of the pulses?
 
 #### A5(a)
-This is the frequency response of section of the signal, `testSig3` sampled at $$n=0:4000$$. This is sampled when the tone of buttun 3 is played.   
+This is the frequency response of section of the signal, `testSig3` sampled at $$n=0:4000$$. This is sampled when the tone of buttun 3 is played.
 
 
 #### 5(b)
@@ -244,7 +244,7 @@ plot(fv-(fs/2), fftshift(abs(S3)));
 For remaining plots, use whichever version you are comfortable with, but make sure you understand both.
 
 
-### 6. 
+### 6.
 Create a new signal that is a short time segment of `testSig3` using
 ```matlab
 n1=1;
@@ -259,18 +259,18 @@ On this plot of the Fourier transform of `sig3a`, use the zoom feature to identi
 %%
 % ----- EXERCISE 4: -----
 %
-%% 
+%%
 % 4(a)
 %
 % Repeat exercise 3 with other signals ----
 
 % ----- create a new signals: -----
-% (1) `sig3b`, 
-% (2) `sig3c`, and 
+% (1) `sig3b`,
+% (2) `sig3c`, and
 % (3) `sig3d`
 
-n1b=4801; 
-n2b=8800; 
+n1b=4801;
+n2b=8800;
 sig3b = testSig3(n1b:n2b);
 
 n1c=2401;
@@ -298,8 +298,8 @@ title3d = horzcat('sig3d: the subregion of testSig3 from n=', ...
     num2str(n1d), ':', num2str(n2d));
 
 % ----- plot the signals:  -----
-% (1) `sig3b`, 
-% (2) `sig3c`, and 
+% (1) `sig3b`,
+% (2) `sig3c`, and
 % (3) `sig3d`
 
 figure();
@@ -348,27 +348,27 @@ How would you characterize the shape of the pulses?
 Can you tell which buttons generated this signal just by looking at this result? Why or why not?
 
 
-### 7. 
+### 7.
 Repeat __Step 6__ completely for three other signals defined below. Compare the pulse shapes of these results to the result in __Step 6__. How does using a shorter signal vector for `sig3d` affect the width of the pulse?
 
-#### 7(a) 
+#### 7(a)
 `sig3b` with `n1=4801` and `n2=8800`.
 
-#### 7(b) 
+#### 7(b)
 `sig3c` with `n1=2401` and `n2=6400`
 
-#### 7(c) 
+#### 7(c)
 `sig3d` with `n1=1901` and `n2=2100`
 
 
 Submit the answers to the questions, the plot of `testSig3` with the four time segments marked, and the four plots from __steps 4 to 7__.
 ```matlab
-%% 
+%%
 % 4(b)
 %
 % ----- Compute DFT of signals: -----
-% (1) `sig3b`, 
-% (2) `sig3c`, and 
+% (1) `sig3b`,
+% (2) `sig3c`, and
 % (3) `sig3d`
 
 S3b = fft(sig3b);
@@ -394,8 +394,8 @@ subplot(3,1,3);
 plot(fv3b-(fs/2), abs(fftshift(S3b)) );
 % axis([3220, 3240, 0, max(abs(S3b))+100]);
 title('sig3b:  higher frequency region');
-% 
-% 
+%
+%
 % ----- plot DFT of sig3c -----
 figure();
 subplot(3,1,1);

@@ -1,7 +1,7 @@
 # lab05
 
 ## OBJECTIVES:
-- Use MATLAB to help us learn the DFT and how to use it to detect DTMF tones. 
+- Use MATLAB to help us learn the DFT and how to use it to detect DTMF tones.
 - Test the selected filter using test signals similar to those generated in Laboratories 3 and 4.
 
 
@@ -18,7 +18,7 @@ In this PreLab, we will explore using the Fourier transform to identify all the 
 
 We can compute the Discrete Fourier Transform (DFT) of a signal more efficiently using a MATLAB function called `fft`. Like `freqz`, it will select samples of the continuous frequency variable for evaluation of the Fourier transform. The number of frequencies selected by the `fft` function is the same as the number of sampled data values in the signal vector. When we use `fft`, we have to make our own `fv` vector.
 
-### 1. 
+### 1.
 Read the above Background Notes and start of the PreLab and understand, as much as possible, what the `fft` will be providing for you. In MATLAB, type “`help fft`” to read about the function that will generate values of the Fourier transform at selected frequency values.
 
 ### 2.
@@ -62,7 +62,7 @@ plot(fv-(fs/2), fftshift(abs(S3)));
 For remaining plots, use whichever version you are comfortable with, but make sure you understand both.
 
 
-### 6. 
+### 6.
 Create a new signal that is a short time segment of `testSig3` using
 ```matlab
 n1=1;
@@ -84,16 +84,16 @@ How would you characterize the shape of the pulses?
 Can you tell which buttons generated this signal just by looking at this result? Why or why not?
 
 
-### 7. 
+### 7.
 Repeat __Step 6__ completely for three other signals defined below. Compare the pulse shapes of these results to the result in __Step 6__. How does using a shorter signal vector for `sig3d` affect the width of the pulse?
 
-#### 7(a) 
+#### 7(a)
 `sig3b` with `n1=4801` and `n2=8800`.
 
-#### 7(b) 
+#### 7(b)
 `sig3c` with `n1=2401` and `n2=6400`
 
-#### 7(c) 
+#### 7(c)
 `sig3d` with `n1=1901` and `n2=2100`
 
 
@@ -102,7 +102,7 @@ Submit the answers to the questions, the plot of `testSig3` with the four time s
 
 ## LAB:
 
-### STEP 1: 
+### STEP 1:
 Write a MATLAB script `m`-file to analyze a signal in sequences of short segments with 50% overlap.
 
 Assume that you have a test signal `sig` (we will use `testSig3` from laboratory 3 for the initial tests) and that `N=length(sig)` is the number of samples in the signal.
@@ -147,7 +147,7 @@ Is there a chance for confusions or wrong detections?
 Print a plot of your results
 
 
-### Step 2: 
+### Step 2:
 Explore the effect of changing the segment length.
 
 In some cases the results computed in step 1 might have a problem __because the exact frequency associated with the index you are observing is not the desired tone frequency__.
@@ -162,7 +162,7 @@ Compare the results of Step 1 to results obtained when the segment length is inc
 Print a plot of your results for lengths of 200 and 400.
 
 
-### STEP 3: 
+### STEP 3:
 Explore the effect of just computing more values of the Fourier transform.
 
 The default number of points to be computed by the fft function is the same as the number of points in the discrete time signal being transformed. So if `seg = sig(nstart : nstart+seg_width-1)`, then `SS = fft(sig)` returns the Fourier transform in `SS` which also has a length of seg_width. However, you can ask the `fft` for more points to be computed in frequency so you can get closer to the actual tone frequencies of interest. To get twice as many use `SS = fft(sig, 2*segwidth)`.
@@ -174,7 +174,7 @@ The default number of points to be computed by the fft function is the same as t
 - Pick a value for seg_width that you think is the smallest value that will work well and pick a value for the number of frequency points computed by `fft` that improves results. Make a button 5 detector by multiplying the row 2 signal and the col 2 signal. (Use `.*` to multiply two vectors point by point.) How well does this work?
 - Using the same values, repeat for `testSig1` and `testSig2` from Laboratory 3.
 
-### STEP 4: 
+### STEP 4:
 Extra: How well does your detector work on an unknown signal?
 
 Each lab team will be given an unknown dial sequence signal that may have different length tones and varying amounts of added noise. You might want to try your detector on variations of your test signal with added noise to see the effect. All systems must be designed to function with some allowance for random variations in the signals. Using the method from the previous laboratory, create
