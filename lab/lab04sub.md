@@ -46,7 +46,7 @@ Note that in the plot command, `plot(fv, abs(H852))` would yield a plot from $$0
 So, to see the two-sided plot, one must subtract $$\tfrac{F_s}{2}$$  (in this case, $$4000$$) and “`fftshift`” the values being plotted — in essence, this is picking up the irght hand side of the plot and putting it onto the left.
 ```matlab
 % ----- EXERCISE 1: -----
-% changes in resolution (N2) of FR 
+% changes in resolution (N2) of FR
 
 fs = 8000;
 fc = 852;
@@ -65,7 +65,7 @@ N2b = 1024;
 title1 = 'one-sided FR of BPF filter @ 852 Hz w/ resolution, N2 = ';
 title2 = 'two-sided FR of BPF filter @ 852 Hz w/ resolution, N2 = ';
 
-% ----- one-sided plot ----- 
+% ----- one-sided plot -----
 figure();
 subplot(2,1,1);
 plot(  fv1, abs(H852a)  );
@@ -75,7 +75,7 @@ subplot(2,1,2);
 plot(  fv2, abs(H852b)  );
 title(  horzcat(title1, num2str(N2b))  );
 
-% ----- two-sided plot ----- 
+% ----- two-sided plot -----
 figure();
 subplot(2,1,1);
 plot(  fv1-(fs/2), fftshift(abs(H852a))  );
@@ -129,9 +129,9 @@ plot(fv-(fs/2), fftshift(abs(H852)));
 title(title5);
 axis([670 1100 0 1]);
 
-% linear interpolation: apprximate magnitude for 
-% (1) 852 Hz, 
-% (2) 772 Hz, and 
+% linear interpolation: apprximate magnitude for
+% (1) 852 Hz,
+% (2) 772 Hz, and
 % (3) 932 Hz
 
 a765 = fftshift(abs(H852(99)));  % 765 Hz
@@ -150,11 +150,11 @@ a932 = a929 + (a937 - a929) * (932-929)/(937-929)
 
 __output__:
 ```
-a852 
+a852
 	= 0.9991
-a772 
+a772
 	= 0.3877
-a932 
+a932
 	= 0.3766
 ```
 
@@ -211,9 +211,9 @@ N2 = 1024;
 
 title1 = 'one-sided FR of BPF filter @ 852 Hz (r) and 770 Hz (b) : N1 = ';
 title2 = 'two-sided FR of BPF filter @ 852 Hz (r) and 770 Hz (b) : N1 = ';
-width = ' w = '; 
+width = ' w = ';
 
-% ----- plot the frequency response ----- 
+% ----- plot the frequency response -----
 figure();
 subplot(2,1,1)
 plot(  fv, abs(H852), '-r', fv, abs(H770), '-b'  );
@@ -233,7 +233,7 @@ xlabel('f [Hz]'); ylabel('Amplitude');
 How much overlap is there between the two frequency bands? Print this plot and submit it with your PreLab. Note the values of `N1` and `w` on it.
 
 #### A4
-There's almost a complete overlap between these two bands. 
+There's almost a complete overlap between these two bands.
 
 -----
 
@@ -252,7 +252,7 @@ fs = 8000;
 fc1 = 852;
 fc2 = 770;
 
-% ----- test1: ----- 
+% ----- test1: -----
 N1 = 100;
 w1 = 40;
 
@@ -266,9 +266,9 @@ N2 = 1024;
 [H770, fv] = freqz(  b770, 1, N2, fs,  'whole'  ) ;
 
 title2 = 'zoomed in: two-sided FR of BPF filter @ 852 Hz (r) and 941 Hz (b) : N1 = ';
-width = ' w = '; 
+width = ' w = ';
 
-% ----- test1: plot the frequency response ----- 
+% ----- test1: plot the frequency response -----
 subplot(3,1,1)
 plot(  fv-(fs/2), fftshift(abs(H852)), '-r',...
     fv-(fs/2), fftshift(abs(H770)), '-b' );
@@ -288,7 +288,7 @@ b770 = fir1(  N1, Wn2, rectwin(N1+1)  );
 [H852, fv] = freqz(  b852, 1, N2, fs,  'whole'  ) ;
 [H770, fv] = freqz(  b770, 1, N2, fs,  'whole'  ) ;
 
-% ----- test2: plot the frequency response ----- 
+% ----- test2: plot the frequency response -----
 subplot(3,1,2)
 plot(  fv-(fs/2), fftshift(abs(H852)), '-r',...
     fv-(fs/2), fftshift(abs(H770)), '-b' );
@@ -307,7 +307,7 @@ b770 = fir1(  N1, Wn2, rectwin(N1+1)  );
 [H852, fv] = freqz(  b852, 1, N2, fs,  'whole'  ) ;
 [H770, fv] = freqz(  b770, 1, N2, fs,  'whole'  ) ;
 
-% ----- test3: plot the frequency response ----- 
+% ----- test3: plot the frequency response -----
 subplot(3,1,3)
 plot(  fv-(fs/2), fftshift(abs(H852)), '-r',...
     fv-(fs/2), fftshift(abs(H770)), '-b' );
@@ -319,14 +319,14 @@ axis([ 600 1100 0 1]);
 ![fig04](lab04sub/lab04sub-fig04.png)
 
 ### 6.
-Compare the results of Steps 4 and 5 with respect to the filter’s ability to suppress one of the tones. 
+Compare the results of Steps 4 and 5 with respect to the filter’s ability to suppress one of the tones.
 
 #### Q6
 What is the effect of reducing `w`? What is the effect of increasing `N1`?
 
 #### A6
 - `w` adjusts the bandwidth. Reducing `w`, entails __narrower__ band on the frequency domain.
-- `N1` adjusts the degree of the filter.  Increasing `N1` brings __more sample points__ for the filter and the shapes of the filter will look more __well-defined__ due to a large sample size. 
+- `N1` adjusts the degree of the filter.  Increasing `N1` brings __more sample points__ for the filter and the shapes of the filter will look more __well-defined__ due to a large sample size.
 
 
 ### 7.
@@ -339,7 +339,7 @@ fs = 8000;
 fc1 = 852;
 fc2 = 770;
 
-% ----- test1: ----- 
+% ----- test1: -----
 N1 = 200;
 w1 = 10;
 
@@ -353,9 +353,9 @@ N2 = 1024;
 [H770, fv] = freqz(  b770, 1, N2, fs,  'whole'  ) ;
 
 title2 = 'zoomed in: two-sided FR of BPF filter @ 852 Hz (r) and 941 Hz (b) : N1 = ';
-width = ' w = '; 
+width = ' w = ';
 
-% ----- test1: plot the frequency response ----- 
+% ----- test1: plot the frequency response -----
 figure();
 plot(  fv-(fs/2), fftshift(abs(H852)), '-r',...
     fv-(fs/2), fftshift(abs(H770)), '-b' );
@@ -397,8 +397,8 @@ Run a script m-file to create the following DTMF test signals
 | Signal name | dial_vals | Tone time (sec.) | Quiet time (sec.) |
 | :---------: | :-------- | :--------------: | :---------------: |
 | `testA` | `dial_vals = [5,8,11,7,8,9]` | 0.25 | 0.05 |
-| `testB` | `dial_vals = [5,8,11,7,8,9]` | 0.10 | 0.02 | 
-| `testC` | `dial_vals = [5,8,11,7,8,9]` | 0.50 | 0.10 | 
+| `testB` | `dial_vals = [5,8,11,7,8,9]` | 0.10 | 0.02 |
+| `testC` | `dial_vals = [5,8,11,7,8,9]` | 0.50 | 0.10 |
 | `testD` | `dial_vals = 1:12` | 0.25 | 0.05 |
 
 ```matlab
@@ -449,7 +449,7 @@ tv4=(0:Ns4-1)/fs;
 
 ------
 
-### STEP 2: 
+### STEP 2:
 Use your filter designed in the Prelab (with your selection of `w` and `N1`) on your test signals.
 
 In MATLAB type “`help filter`” to read about the function that will filter an input signal with a filter described by its the difference equation coefficients. You can also refer to lab #2.
@@ -457,9 +457,9 @@ In MATLAB type “`help filter`” to read about the function that will filter a
 
 #### 2(a)
 - Create `b770` and `b852` as you did in the Prelab with your selection for `N1` and `w`.
-- Use `testC` as an input signal and create filtered outputs `y770` and `y852` with your filters. 
+- Use `testC` as an input signal and create filtered outputs `y770` and `y852` with your filters.
 - Plot the input signal and the two output signals on the same plot (using `subplot` with 3 rows and one column).
-- Repeat the previous bullet using `testB` and describe the impact of the shorter tone time and shorter quiet time. 
+- Repeat the previous bullet using `testB` and describe the impact of the shorter tone time and shorter quiet time.
 
 ```matlab
 %% STEP 2
@@ -491,7 +491,7 @@ title3='the filtered output signal @ 770 Hz';
 %
 % ----- filtered output for testC signal -----
 %
-% (1) using convolution 
+% (1) using convolution
 %
 % y852 = conv(testC, b852);
 % y770 = conv(testC, b770);
@@ -501,7 +501,7 @@ title3='the filtered output signal @ 770 Hz';
 y852c = filter(b852, 1, testC);
 y770c = filter(b770, 1, testC);
 %
-% ----- plot input and output signals ---- 
+% ----- plot input and output signals ----
 %
 figure();
 subplot(3,1,1)
@@ -584,7 +584,7 @@ title3='your filtered output signal @ 770 Hz';
 %
 % ----- filtered output for testC signal -----
 %
-% (1) using convolution 
+% (1) using convolution
 %
 % y852 = conv(testC, b852);
 % y770 = conv(testC, b770);
@@ -601,7 +601,7 @@ y770c2 = filter(b770b, 1, testC);
 y852b2 = filter(b852b, 1, testB);
 y770b2 = filter(b770b, 1, testB);
 %
-% ----- plot input and output signals (step 2 vs step 3) ----- 
+% ----- plot input and output signals (step 2 vs step 3) -----
 %
 figure();
 subplot(3,2,1)
@@ -636,7 +636,7 @@ xlabel('t [sec.]'); ylabel('amplitude');
 %
 % ---- filtered output for testB signal -----
 %
-% (1) using convolution 
+% (1) using convolution
 %
 % y852 = conv(testC, b852);
 % y770 = conv(testC, b770);
@@ -646,7 +646,7 @@ xlabel('t [sec.]'); ylabel('amplitude');
 y852b = filter(b852a, 1, testB);
 y770b = filter(b770a, 1, testB);
 %
-% ----- plot input and output signals ----- 
+% ----- plot input and output signals -----
 %
 figure();
 subplot(3,2,1)
@@ -708,7 +708,7 @@ title3='your filtered output signal @ 770 Hz';
 %
 % ---- filtered output for testC signal -----
 %
-% (1) using convolution 
+% (1) using convolution
 %
 % y852c1 = conv(testC, b852a);
 % y770c1 = conv(testC, b770a);
@@ -733,7 +733,7 @@ y770c3 = filter(b770c, 1, testC);
 y852b3 = filter(b852c, 1, testB);
 y770b3 = filter(b770c, 1, testB);
 %
-% ----- plot input and output signals (1) ----- 
+% ----- plot input and output signals (1) -----
 %
 figure();
 subplot(3,2,1)
@@ -767,7 +767,7 @@ title(title3);
 xlabel('t [sec.]'); ylabel('amplitude');
 
 %
-% ----- plot input and output signals (2) ----- 
+% ----- plot input and output signals (2) -----
 %
 figure();
 subplot(3,2,1)
@@ -839,7 +839,7 @@ title3='your filtered output signal @ 770 Hz';
 %
 % ---- filtered output for testC signal -----
 %
-% (1) using convolution 
+% (1) using convolution
 %
 % y852 = conv(testC, b852);
 % y770 = conv(testC, b770);
@@ -859,7 +859,7 @@ y770b = filter(b770, 1, testB);
 % ----- 1. N1 = 100 vs. N1a = 200 ---- %
 % ------------------------------------ %
 %
-% ----- plot input and output signals (N1a for testC)----- 
+% ----- plot input and output signals (N1a for testC)-----
 %
 figure();
 subplot(3,2,1)
@@ -892,7 +892,7 @@ plot(tv3, y770c1);
 title(title3);
 xlabel('t [sec.]'); ylabel('amplitude');
 %
-% ----- plot input and output signals (N1a for testB) ----- 
+% ----- plot input and output signals (N1a for testB) -----
 %
 figure();
 subplot(3,2,1)
@@ -937,7 +937,7 @@ xlabel('t [sec.]'); ylabel('amplitude');
 % ----- 2. N1 = 100 vs. N1b = 50 ---- %
 % ------------------------------------ %
 %
-% ----- plot input and output signals (N1a for testC)----- 
+% ----- plot input and output signals (N1a for testC)-----
 %
 figure();
 subplot(3,2,1)
@@ -970,7 +970,7 @@ plot(tv3, y770c2);
 title(title3);
 xlabel('t [sec.]'); ylabel('amplitude');
 %
-% ----- plot input and output signals (N1a for testB) ----- 
+% ----- plot input and output signals (N1a for testB) -----
 %
 figure();
 subplot(3,2,1)
@@ -1016,7 +1016,7 @@ xlabel('t [sec.]'); ylabel('amplitude');
 % ----- 3. N1 = 100 vs. N1c = 400 ---- %
 % ------------------------------------ %
 %
-% ----- plot input and output signals (N1a for testC)----- 
+% ----- plot input and output signals (N1a for testC)-----
 %
 figure();
 subplot(3,2,1)
@@ -1049,7 +1049,7 @@ plot(tv3, y770c3);
 title(title3);
 xlabel('t [sec.]'); ylabel('amplitude');
 %
-% ----- plot input and output signals (N1a for testB) ----- 
+% ----- plot input and output signals (N1a for testB) -----
 %
 figure();
 subplot(3,2,1)
@@ -1090,7 +1090,7 @@ xlabel('t [sec.]'); ylabel('amplitude');
 #### A3(c)
 `N1` represeents the my ideal length.  The challenge of picking the right `N1` resides in how well it will filter the difficult signal like `testB`.  Surprisingly, the half of my original pick, improved the filter output better.
 
------ 
+-----
 
 ### STEP 4:
 Build a detector for the DTMF tones
@@ -1111,7 +1111,7 @@ function Y = mydetector(x, smoothLength)
 % - thresh is the threshold level for amplitude to flip to 0 or 1.
 %
 % OUTPUT:
-% - Y is the vector filtered output with better amplitude 
+% - Y is the vector filtered output with better amplitude
 
 xa = abs(x);   % rectified output (nonnegative)
 b = (  ones(1,smoothLength)/smoothLength  );
@@ -1124,7 +1124,7 @@ end
 - Test the `mydetector` function using these filters on `testD` which contains all the tones and adjust `smoothLength` so that the oscillations in the result are less than about 10% of the amplitude. What happens to the shape and width of the pulses in the output from `mydetector` when `smoothLength` is set to a large number?
 
 ```matlab
-%% STEP 4 
+%% STEP 4
 %
 %% 4(a) Setup
 %
@@ -1158,7 +1158,7 @@ title5b='your filtered output signal @ 1336 Hz (zoomed in)';
 %
 % ----- filtered output for testD signal -----
 %
-% (1) using convolution 
+% (1) using convolution
 %
 % y770d = conv(testD, b770);
 % y852d = conv(testD, b852);
@@ -1180,7 +1180,7 @@ y852dr = mydetector(y852d, Lsmooth);
 y1209dr = mydetector(y1209d, Lsmooth);
 y1336dr = mydetector(y1336d, Lsmooth);
 %
-% ----- plot input and output signals ----- 
+% ----- plot input and output signals -----
 %
 figure();
 subplot(5,2,1)
@@ -1208,7 +1208,7 @@ plot(tv4, y1336d);
 title(title5a);
 xlabel('t [sec.]'); ylabel('amplitude');
 %
-% ----- plot input and output signals (with my detector) ----- 
+% ----- plot input and output signals (with my detector) -----
 %
 subplot(5,2,2)
 plot(tv4, testD);
@@ -1265,13 +1265,13 @@ end
 
 __output__:
 ```
-x = 
+x =
 	0.3172
-z = 
+z =
 	0.0277
-ans = 
+ans =
 	amplitude within 10%
-``` 
+```
 
 ![fig10a](lab04sub/lab04sub-fig10a.png)
 
@@ -1285,7 +1285,7 @@ My pick for the quantity of `smoothLength` is 200. The role of `smoothLength` is
 To complete a detector for the 8 button, multiply the smoothed rectified output of the `b852` filter and the smoothed rectified output of the `b1336` filter. (__Note__: Use the `.*` operation to multiply point by point, not the `*` operation which will do a vector product.) On a single plot with four rows, plot the input signal `testD`, the smoothed rectified output of the `b852` filter, the smoothed rectified output of the `b1336` filter, and the product of the two waveforms. Submit this with your lab report.
 
 ```matlab
-% ----- plot input and output signals (with my detector) ----- 
+% ----- plot input and output signals (with my detector) -----
 %
 figure();
 subplot(4,1,1)
@@ -1353,11 +1353,11 @@ hiampa = max(y8dr(14400:16705))
 
 __output__:
 ```
-loampb = 
+loampb =
 	0.0960
 Lpulseb =
 	0.2940
-hiampb = 
+hiampb =
 	0.0189
 ```
 
@@ -1370,7 +1370,7 @@ hiampb =
 To complete a detector for the 4 button, multiply the smoothed rectified output of the `b770` filter and the smoothed rectified output of the `b1209` filter. On a single plot with four rows, plot the input signal testD, the smoothed rectified output of the `b770` filter, the smoothed rectified output of the `b1209` filter, and the product of the two waveforms. Submit this with your lab report.
 
 ```matlab
-%% 4(c) 
+%% 4(c)
 %
 % ---- create a detector for the button 4 -----
 %
@@ -1402,7 +1402,7 @@ title4a='your filtered output signal for button 4';
 title4b='your filtered output signal for button 4 (zoomed in)';
 title4c='your filtered output signal outside button 4 (2nd highest amp)';
 %
-% ----- plot input and output signals (with my detector) ----- 
+% ----- plot input and output signals (with my detector) -----
 %
 figure();
 subplot(4,1,1)
@@ -1439,7 +1439,7 @@ plot(tv4, y4dr);
 title(title4b);
 xlabel('t [sec.]'); ylabel('amplitude');
 axis([tv4(7200), tv4(9500), min(y4dr), max(y4dr)]);
-% 
+%
 subplot(3,1,3)
 plot(tv4, y4dr);
 title(title4c);
@@ -1469,11 +1469,11 @@ hiampb = max(y4dr(9600:11900))
 
 __output__:
 ```
-loampb = 
+loampb =
 	0.0989
 Lpulseb =
 	0.2938
-hiampb = 
+hiampb =
 	0.0191
 ```
 
@@ -1510,8 +1510,8 @@ To apply the same methodology in these matlab code shown above, the ideas and st
 - Multiply these fitered signal to see the overlap.
 
 
-#### 4(f) Comment 
-In the lab, we came across the odd findings in the filtered/modified pulse shape. 
+#### 4(f) Comment
+In the lab, we came across the odd findings in the filtered/modified pulse shape.
 
 
 ### STEP 5:
@@ -1521,7 +1521,7 @@ All systems must be designed to function with some allowance for random variatio
 - Type “`help randn`” to read about the function that creates a random signal.
 - Make a noisy signal by adding random noise to `testSig4` using
 ```matlab
-testDn = testD + a*randn(1, length(testD)); 
+testDn = testD + a*randn(1, length(testD));
 testDn = TestD4n/(max(abs(testDn)));
 ```
 Choose values of `a` and test `mydetector` for the noisy signal. Find the highest value of `a` at which you think your detector still works reliably. Using sound, listen to the noisy test signal and see how well you can hear the tones. Create a plot for this as you did in Step 4 and submit it with your laboratory report with the value of a indicated on it.
@@ -1529,7 +1529,7 @@ Choose values of `a` and test `mydetector` for the noisy signal. Find the highes
 
 ## A5.
 I made a separate function called, `mydetectorMod` that has one more parameter, `thresh`, that indicates the threshold value to set the amplitude to 1 for the value above `thresh`.
-(Thanks for the help of our TA, Tanor)
+(Thanks for the help of our TA, Tanner)
 ```matlab
 function Z = mydetectorMod(x, smoothLength, thresh)
 % % INPUTS:
@@ -1539,7 +1539,7 @@ function Z = mydetectorMod(x, smoothLength, thresh)
 % - thresh is the threshold level for amplitude to flip to 0 or 1.
 %
 % OUTPUT:
-% - Y is the vector filtered output with better amplitude 
+% - Y is the vector filtered output with better amplitude
 
 xa = abs(x);   % rectified output (nonnegative)
 b = (ones(1,smoothLength)/smoothLength);
@@ -1579,25 +1579,25 @@ b852 = fir1(  N1, Wn2, rectwin(N1+1)  );
 b1209 = fir1(  N1, Wn3, rectwin(N1+1)  );
 b1336 = fir1(  N1, Wn4, rectwin(N1+1)  );
 
-% 
+%
 % ----- create a noisy signal -----
 %
-a = 0.8;  % your personal noise level 
+a = 0.8;  % your personal noise level
 testDn = testD + a*randn(  1, length(testD)  );
 testDn = testDn/(max(abs(testDn)));
 
 % %
 % % ----- filtered output for testD signal -----
 % %
-% % (1) using convolution 
-% % 
+% % (1) using convolution
+% %
 % y770d = conv(testD, b770);
 % y852d = conv(testD, b852);
 % y1209d = conv(testD, b1209);
 % y1336d = conv(testD, b1336);
 %
 % (2) using filter function
-% 
+%
 y770d = filter(b770, 1, testDn);
 y852d = filter(b852, 1, testDn);
 y1209d = filter(b1209, 1, testDn);
@@ -1629,8 +1629,8 @@ title3='your filtered output signal @ 852 Hz';
 title4='your filtered output signal @ 1209 Hz';
 title5='your filtered output signal @ 1336 Hz';
 
-% 
-% ----- plot input / output signals (noise signal vs. mydetector)----- 
+%
+% ----- plot input / output signals (noise signal vs. mydetector)-----
 %
 figure();
 subplot(5,2,1)
@@ -1683,8 +1683,8 @@ plot(tv4, y1336dr1);
 title(title5);
 xlabel('t [sec.]'); ylabel('amplitude');
 
-% 
-% ----- plot input / output signals (noise signal vs. mydetectorMod) ----- 
+%
+% ----- plot input / output signals (noise signal vs. mydetectorMod) -----
 %
 figure();
 subplot(5,2,1)
@@ -1743,7 +1743,7 @@ xlabel('t [sec.]'); ylabel('amplitude');
 ![fig13b](lab04sub/lab04sub-fig13b.png)
 
 ```matlab
-%% 5(b) 
+%% 5(b)
 %
 % ---- create a detector for the button 8 -----
 %
@@ -1782,8 +1782,8 @@ title2='your filtered output signal @ 852 Hz';
 title3='your filtered output signal @ 1336 Hz';
 title4='your filtered output signal for button 8';
 
-% 
-% ----- plot input / output signals (noise signal vs. mydetector)----- 
+%
+% ----- plot input / output signals (noise signal vs. mydetector)-----
 %
 figure();
 subplot(4,2,1)
@@ -1826,8 +1826,8 @@ plot(tv4, y8dr1);
 title(title4);
 xlabel('t [sec.]'); ylabel('amplitude');
 
-% 
-% ----- plot input / output signals (noise signal vs. mydetectorMod) ----- 
+%
+% ----- plot input / output signals (noise signal vs. mydetectorMod) -----
 %
 figure();
 subplot(4,2,1)
@@ -1877,7 +1877,7 @@ xlabel('t [sec.]'); ylabel('amplitude');
 
 
 ```matlab
-%% 5(c) 
+%% 5(c)
 %
 % ---- create a detector for the button 4 -----
 %
@@ -1894,17 +1894,17 @@ b1209 = fir1(  N1, Wn3, rectwin(N1+1)  );
 y770d = filter(b770, 1, testDn);
 y1209d = filter(b1209, 1, testDn);
 y4d = y770d .* y1209d;
-% 
+%
 % ----- use mydetector.m function to fix -----
-% 
+%
 Lsmooth = 100;
 y770dr1 = mydetector(y770d, Lsmooth);
 y1209dr1 = mydetector(y1209d, Lsmooth);
 y4dr1 = mydetector(y4d, Lsmooth);
 
-% 
+%
 % ----- use mydetectorMod.m function to improve -----
-% 
+%
 thres = 0.05;
 y770dr2 = mydetectorMod(y770d, Lsmooth, thres);
 y1209dr2 = mydetectorMod(y1209d, Lsmooth, thres);
@@ -1917,8 +1917,8 @@ title2='your filtered output signal @ 852 Hz';
 title3='your filtered output signal @ 1336 Hz';
 title4='your filtered output signal for button 8';
 
-% 
-% ----- plot input / output signals (noise signal vs. mydetector)----- 
+%
+% ----- plot input / output signals (noise signal vs. mydetector)-----
 %
 figure();
 subplot(4,2,1)
@@ -1961,8 +1961,8 @@ plot(tv4, y4dr1);
 title(title4);
 xlabel('t [sec.]'); ylabel('amplitude');
 
-% 
-% ----- plot input / output signals (noise signal vs. mydetectorMod) ----- 
+%
+% ----- plot input / output signals (noise signal vs. mydetectorMod) -----
 %
 figure();
 subplot(4,2,1)
@@ -2005,7 +2005,7 @@ plot(tv4, y4dr2);
 title(title4);
 xlabel('t [sec.]'); ylabel('amplitude');
 
-% 
+%
 % ----- sound output -----
 % you will hear higher hiss sound.
 
@@ -2017,22 +2017,22 @@ xlabel('t [sec.]'); ylabel('amplitude');
 % sound(y770d, fs);
 % pause(3.6);
 
-% % play button: 7 8 9 
+% % play button: 7 8 9
 % sound(y852d, fs);
 % pause(3.6);
 
-% % play button: 1 4 7 * 
+% % play button: 1 4 7 *
 % sound(y1209d, fs);
 % pause(3.6);
 
-% % play button: 2 5 8 0 
+% % play button: 2 5 8 0
 % sound(y1336d, fs);
 % pause(3.6);
 
 % play button: 8
 % sound(y8d, fs);
 % pause(3.6);
-% 
+%
 % play button: 4
 % sound(y4d, fs);
 % pause(3.6);
