@@ -52,7 +52,7 @@ Design an FIR notch filter by specifying the placement of two zeros.
 	$$
 	H(z)=\frac{\left(z-e^{j\omega_0}\right)\left(z-e^{-j\omega_0}\right)}{z^2}
 	$$
-	- Use `freqz` to plot the frequency response of this filter. How would you characterize the width and depth of the notch at $$1\:\text{kHz}? Print the plot.
+	- Use `freqz` to plot the frequency response of this filter. How would you characterize the width and depth of the notch at $$1\:\text{kHz}$$? Print the plot.
 - Repeat for a sampling frequency of $$11\:\text{kHz}$$.
 
 ### 4.
