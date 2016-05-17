@@ -771,16 +771,16 @@ Explore the effect of just computing more values of the Fourier transform.
 How well does your button 5 detector work?
 
 ##### For `testSig3`
-![fig03a-1g](lab05sub/lab05part03c/lab05sub-fig03c-1e.png)
-![fig03a-1h](lab05sub/lab05part03c/lab05sub-fig03c-1f.png)
+![fig03a-1g](lab05sub/lab05part03a/lab05sub-fig03a-1g.png)
+![fig03a-1h](lab05sub/lab05part03a/lab05sub-fig03a-1h.png)
 
 ##### For `testSig1`
-![fig03b-1g](lab05sub/lab05part03c/lab05sub-fig03c-1e.png)
-![fig03b-1h](lab05sub/lab05part03c/lab05sub-fig03c-1f.png)
+![fig03b-1g](lab05sub/lab05part03b/lab05sub-fig03b-1g.png)
+![fig03b-1h](lab05sub/lab05part03b/lab05sub-fig03b-1h.png)
 
 ##### For `testSig2`
-![fig03c-1g](lab05sub/lab05part03c/lab05sub-fig03c-1e.png)
-![fig03c-1h](lab05sub/lab05part03c/lab05sub-fig03c-1f.png)
+![fig03c-1g](lab05sub/lab05part03c/lab05sub-fig03c-1g.png)
+![fig03c-1h](lab05sub/lab05part03c/lab05sub-fig03c-1h.png)
 
 
 ### STEP 4: 
