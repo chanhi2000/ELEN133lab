@@ -142,7 +142,7 @@ H(z)&=\frac{\left(z-e^{j\omega_0}\right)\left(z-e^{-j\omega_0}\right)}{\left(z-0
 $$
 This is an IIR filter.  We need to make coefficients for both denominator and nominator. So given the transfer function,
 $$
-H(z)&=\frac{z^2-z\sqrt{2}+1}{z^2-z(0.9\sqrt{2})+0.81}\\
+H(z)=\frac{z^2-z\sqrt{2}+1}{z^2-z(0.9\sqrt{2})+0.81}
 $$
 We can find the discrete-time sequence as followed.
 $$
