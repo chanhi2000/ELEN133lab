@@ -13,4 +13,6 @@
    * [lab05sub](lab/lab05sub.md)
 * [lab06](lab/lab06.md)
    * [lab06sub](lab/lab06sub.md)
+* [lab07](lab/lab07.md)
+   * [lab07sub](lab/lab07sub.md)
 

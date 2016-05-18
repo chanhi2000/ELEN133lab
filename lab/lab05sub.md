@@ -469,7 +469,7 @@ present?__
 
 ![fig01t](lab03sub/lab03sub-fig01.png)
 Yes, the `testSig3` played button 3, 5, 7, 11, respectively. Row 2 must detect buttons 4, 5, and 6. and column 2 must detect 2, 5, 8, 11.
-- For row 2, it must detect the button 5 
+- For row 2, it must detect the button 5
 - For column 2, it must detect 5 and 11
 
 (See the Figure 01c, e, g)
@@ -485,7 +485,7 @@ My rule to determine which button is pressed is to multiply the corresponding ro
 #### 1(d)
 __Is there a chance for confusions or wrong detections?__
 
-There is a danger of misinterpretation, if your filter isn't doing the job properly, *i.e.* when the difference in amplitudes for filtered signal isn't distinguishable.  
+There is a danger of misinterpretation, if your filter isn't doing the job properly, *i.e.* when the difference in amplitudes for filtered signal isn't distinguishable.
 
 
 
@@ -498,9 +498,9 @@ Explore the effect of changing the segment length.
 ```
 ans =
 	row 1&2, and col 1&2 for seg_width=100
-fv_row1 = 
+fv_row1 =
 	720
-fv_row2 = 
+fv_row2 =
 	800
 fv_col1 =
 	1200
@@ -510,16 +510,16 @@ diff_row1 =
 	23
 diff_row2 =
 	30
-diff_col1 = 
+diff_col1 =
 	9
 diff_col2 =
 	24
 
 ans =
 	row 1&2, and col 1&2 for seg_width=200
-fv_row1 = 
+fv_row1 =
 	680
-fv_row2 = 
+fv_row2 =
 	760
 fv_col1 =
 	1200
@@ -529,28 +529,28 @@ diff_row1 =
 	17
 diff_row2 =
 	10
-diff_col1 = 
+diff_col1 =
 	9
 diff_col2 =
 	16
 
 ans =
 	row 1&2, and col 1&2 for seg_width=400
-fv_row1 = 
+fv_row1 =
 	700
-fv_row2 = 
+fv_row2 =
 	780
 fv_col1 =
 	1200
 fv_col2 =
 	1340
-diff_row1 = 
+diff_row1 =
 	3
 diff_row2 =
     10
 diff_col1 =
 	9
-diff_col2 = 
+diff_col2 =
 	4
 ```
 
@@ -783,7 +783,7 @@ How well does your button 5 detector work?
 ![fig03c-1h](lab05sub/lab05part03c/lab05sub-fig03c-1h.png)
 
 
-### STEP 4: 
+### STEP 4:
 Extra: How well does your detector work on an unknown signal?
 
 #### OUTPUT OF `lab05part04.m`
@@ -843,14 +843,14 @@ function dial_sig = my_dtmf(tone_time, quiet_time, fs, dial_vals)
 % Note that the dialed "0" is button number 11!!!!!!
 %
 % OUTPUT:
-% - dial_sig is the vector of sampled values of the DTMF output signal 
+% - dial_sig is the vector of sampled values of the DTMF output signal
 % for the number sequence
 
 t_tone_new = 0:tone_time*fs-1;
 num = length(dial_vals);
 quiet_sig = zeros(1, fs*quiet_time);
 f_tone = [
-	697, 1209; 697, 1336; 697, 1477;... 
+	697, 1209; 697, 1336; 697, 1477;...
 	770, 1209; 770, 1336; 770, 1477;...
 	852, 1209; 852, 1336; 852, 1477;...
 	941, 1209; 941, 1336; 941, 1477;
@@ -863,7 +863,7 @@ for ii=1:num
 	hi = f_tone(dial_vals(ii),2);
 	new_sig = cos( 2 * pi * lo / fs * t_tone_new)...
 		+ cos( 2 * pi * hi / fs * t_tone_new );
-	
+
 	% normalize the output around 1
 	new_sig = new_sig./abs(max(new_sig(:)));
 
@@ -877,7 +877,7 @@ end
 clear, clc, clf, cla, close all;
 %
 %% STEP 1
-% Write a MATLAB script m-file to analyze a signal in sequences of short 
+% Write a MATLAB script m-file to analyze a signal in sequences of short
 % segments with 50% overlap.
 %
 % ----- create signals -----
@@ -913,7 +913,7 @@ figure();
 plot(tv3, testSig3);
 title('testSig3: the whole signal');
 %
-for seg_width = [100, 200 ,400] 
+for seg_width = [100, 200 ,400]
 	seg_step = 0.5 * seg_width;
 	n_seg = N3/seg_step-1;
 	%
@@ -929,7 +929,7 @@ for seg_width = [100, 200 ,400]
 		n_row2 = round(f_row2 * seg_width / fs + 1);
 		n_col1 = round(f_col1 * seg_width / fs + 1);
 		n_col2 = round(f_col2 * seg_width / fs + 1);
-		%   
+		%
 		R(ii,1) = n(end)-seg_step;
 		R(ii,2) = mean(abs(S3));
 		R(ii,3) = abs(S3(n_row1));
@@ -1011,7 +1011,7 @@ f_row2 = 770;
 f_col1 = 1209;
 f_col2 = 1336;
 %
-for seg_width = [100, 200 ,400] 
+for seg_width = [100, 200 ,400]
 	seg_step = 0.5 * seg_width;
 	n_seg = N3/seg_step-1;
 	%
@@ -1053,7 +1053,7 @@ for seg_width = [100, 200 ,400]
 	diff_row2= abs(f_row2-fv_row2)
 	diff_col1= abs(f_col1-fv_col1)
 	diff_col2= abs(f_col2-fv_col2)
-	%    
+	%
 	tc = R(:,1).';
 	avg = R(:,2).';
 	absRow1 = R(:,3).';
@@ -1082,13 +1082,13 @@ for seg_width = [100, 200 ,400]
 	plot(tc, absRow2);
 	title(  horzcat(  title2b, num2str(f_row2))  );
 	%
-	subplot(4,1,3); 
+	subplot(4,1,3);
 	plot(tc, absCol1);
 	title(  horzcat(  title2c, num2str(f_col1))  );
 	%
 	subplot(4,1,4);
 	plot(tc, absCol2);
-	title(  horzcat(  title2d, num2str(f_col2))  ); 
+	title(  horzcat(  title2d, num2str(f_col2))  );
 end
 ```
 
@@ -1099,7 +1099,7 @@ end
 clear, clc, clf, cla, close all;
 %
 %% STEP 3(a)-1
-% Explore the effect of just computing more values of the 
+% Explore the effect of just computing more values of the
 % Fourier transform.
 %
 % Generate signal `testSig3` (from lab 03)
@@ -1127,7 +1127,7 @@ f_row2 = 770;
 f_col1 = 1209;
 f_col2 = 1336;
 %
-for segWidthFactor = [1, 2, 4] 
+for segWidthFactor = [1, 2, 4]
 	seg_width = 100;
 	seg_step = 0.5 * seg_width;
 	%
@@ -1154,7 +1154,7 @@ for segWidthFactor = [1, 2, 4]
 		%
 		nstart = nstart + seg_step;
 	end
-	%  
+	%
 	tc3 = R3(:,1).';
 	avg3 = R3(:,2).';
 	abs3Row1 = R3(:,3).';
@@ -1195,7 +1195,7 @@ end
 
 %% STEP 3(a)-2
 % Make a button 5 detector
-% 
+%
 % Generate signal `testSig3` (from lab 03)
 %
 fs = 8000;
@@ -1287,7 +1287,7 @@ title( title3 );
 clear, clc, clf, cla, close all;
 %
 %% STEP 3(b)-1
-% Explore the effect of just computing more values of the 
+% Explore the effect of just computing more values of the
 % Fourier transform.
 %
 % Generate signal `testSig1` (from lab 03)
@@ -1316,7 +1316,7 @@ f_row2 = 770;
 f_col1 = 1209;
 f_col2 = 1336;
 %
-for segWidthFactor = [1, 2, 4] 
+for segWidthFactor = [1, 2, 4]
 	seg_width = 100;
 	seg_step = 0.5 * seg_width;
 	%
@@ -1384,7 +1384,7 @@ end
 
 %% STEP 3(b)-2
 % Make a button 5 detector
-% 
+%
 % Generate signal `testSig3` (from lab 03)
 %
 fs = 8000;
@@ -1476,7 +1476,7 @@ title( title3 );
 clear, clc, clf, cla, close all;
 %
 %% STEP 3(c)-1
-% Explore the effect of just computing more values of the 
+% Explore the effect of just computing more values of the
 % Fourier transform.
 %
 % Generate signal `testSig2` (from lab 03)
@@ -1505,7 +1505,7 @@ f_row2 = 770;
 f_col1 = 1209;
 f_col2 = 1336;
 %
-for segWidthFactor = [1, 2, 4] 
+for segWidthFactor = [1, 2, 4]
 	seg_width = 100;
 	seg_step = 0.5 * seg_width;
 	%
@@ -1532,14 +1532,14 @@ for segWidthFactor = [1, 2, 4]
 		%
 		nstart = nstart + seg_step;
 	end
-	%  
+	%
 	tc2 = R2(:,1).';
 	avg2 = R2(:,2).';
 	abs2Row1 = R2(:,3).';
 	abs2Row2 = R2(:,4).';
 	abs2Col1 = R2(:,5).';
 	abs2Col2 = R2(:,6).';
-	%    
+	%
 	title1 = 'tesSig2: average mag freqe resp,freqz @ seg-width=';
 	title2a = 'tesSig2: mag freq resp for row 1, f=';
 	title2b = 'tesSig2: mag freq resp for row 2, f=';
@@ -1572,7 +1572,7 @@ end
 
 %% STEP 3(c)-2
 % Make a button 5 detector
-% 
+%
 % Generate signal `testSig3` (from lab 03)
 %
 fs = 8000;
@@ -1661,7 +1661,7 @@ title( title3 );
 %% intialize
 clear, clc, clf, cla, close all;
 %
-%% STEP 4 
+%% STEP 4
 % Extra: How well does your detector work on an unknown signal?
 %
 % Generate signal `testSig3` (from lab 03)
@@ -1764,8 +1764,8 @@ title( title3 );
 %% intialize
 clear, clc, clf, cla, close all;
 %
-%% STEP 4 
-% Extra: Consider how the results would be different if we had used 
+%% STEP 4
+% Extra: Consider how the results would be different if we had used
 % the energy at each frequency point instead of the magnitude.
 %
 % Generate signal `testSig3` (from lab 03)
