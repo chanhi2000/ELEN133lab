@@ -14,7 +14,7 @@ prototype filters.
 Using the method of Step 4 of Prelab 6, get the coefficients of a notch filter at a frequency of $$2000\:\text{Hz}$$ with poles at a radius of $$0.9$$. Assume a sampling rate of $$8000\:\text{Hz}$$. Verify your design with MATLAB. Use the `freqz` function to compute the frequency response and plot the magnitude as a function of frequency. Use `zplane` to plot the poles and zeros.
 
 ### 2.
-Using the filter of Step 1 with a notch at $$2000\:text{Hz}, find the coefficients of a sixth order filter $$H_3(z)=H_0(z^3)$$. Plot the frequency response and the pole/zero plot for this filter. At what frequencies do you have notches?
+Using the filter of Step 1 with a notch at $$2000\:text{Hz}$$, find the coefficients of a 6th order filter $$H_3(z)=H_0(z^3)$$. Plot the frequency response and the pole/zero plot for this filter. At what frequencies do you have notches?
 
 ### 3.
 Repeat the previous step to create an 8th order filter $$H_4(z)=H_0(z^4)$$.
