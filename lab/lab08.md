@@ -63,7 +63,7 @@ Repeat step 1 for a notch at a frequency of $$666.67\:\text{Hz}$$.
 ### 5.
 Type "`help butter`" in MATLAB to see how to get coefficients for a Butterworth low pass filter. Using the MATLAB function `[b, a] = butter(N, w)`, compute the coefficients for a second order Butterworth filter with a cutoff frequency of $$1200\:\text{Hz}$$. (Be careful to scale the cutoff frequency correctly to get the value for w in the function call.) Verify your design with MATLAB by plotting the frequency response and the pole/zero plot for this filter.
 
-### 6. 
+### 6.
 Using the filter of Step 5, find the coefficients of a 6th order filter $$H_3(z)=H_0(z^3)$$ as you did in Step 2. Plot the frequency response and the pole/zero plot for this filter.
 
 
@@ -71,13 +71,13 @@ Using the filter of Step 5, find the coefficients of a 6th order filter $$H_3(z)
 ### 1.
 How are the positions of the poles and zeros in the 6th order filters related to the positions of the poles and zeros of the second order filters used to create the sixth order filters? How do they move for the eighth order filter?
 
-### 2. 
+### 2.
 How does the width of the notch at $$666.67\:\text{Hz}$$ in Step 4 compare to the width of the notch at that frequency in Step 2? Why?
 
 ### 3.
 If a notch filter were needed to remove an interfering sinusoidal signal at $$666.67\:\text{Hz}$$, would the filters from Step 2 and Step 3 give approximately similar results? How would your answer change if the interfering signal were a non-sinusoidal periodic signal with a repetition frequency of 666.67 Hz? Consider, for example, a square wave interference.
 
-### 4. 
+### 4.
 Explain the frequency response of the 6th order filter in Step 6.
 
 __Submit the answers to the questions and the plots of the frequency responses and pole/zero diagrams.__
@@ -86,7 +86,7 @@ __Submit the answers to the questions and the plots of the frequency responses a
 ## LABORATORY PROCEDURE:
 This laboratory will use the same board for real time signal processing as the previous laboratory. Programs will be able to switch from one filter to another based on loading different coefficient files. In this laboratory, we will observe filter performance on controlled signals from a signal generator and also on audio signals.
 
-### PART 1 
+### PART 1
 __Set up the equipment as you did in the previous laboratory.__
 
 1. Turn on the signal generator and the oscilloscope so they can warm up.
@@ -95,7 +95,7 @@ __Set up the equipment as you did in the previous laboratory.__
 4. Connect the analog output from the DSK board to a second scope input.
 
 
-### PART 2: 
+### PART 2:
 __Create a project with Code Composer as you did in the previous laboratory.__
 
 1. Create two coefficient files that set the values for a and b. One filter should be the second order notch filter from your prelab with a notch at $$666.67\:\text{Hz}$$. The second filter should be the 6th order filter from your prelab that was created using coefficients from the second order notch filter with a notch at $$2000\:\text{Hz}$$. This filter should produce three notches.
@@ -103,7 +103,7 @@ Code should be flexible so that you can easily switch between these coefficient 
 2. Include your new coefficient file in your main.c.
 3. Compile and debug your code.
 
-### PART 3: 
+### PART 3:
 __Explore the performance of the two notch filters.__
 
 1. Include the appropriate coefficients file to select the second order notch filter.
