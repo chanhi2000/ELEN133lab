@@ -240,7 +240,7 @@ This measures the minimum delay between capturing a sample with the ADC and then
 
 | function generator | input | output |
 | :----------: | :---: | :----: |
-| ![fig01a](lab07sub/step02/lab07sub-fig01a.jpg) | ![fig01b](lab07sub/step02/lab07sub-fig01b.jpg) | ![fig01c](lab07sub/lab07sub-fig01c.jpg) |
+| ![fig01a][1a] | ![fig01b][1b] | ![fig01c][1c] |
 
 The latency is measured to be roughly $$0.9\:\text{ms}$$
 
@@ -253,8 +253,8 @@ Decrease the frequency of the signal generator signal until the output amplitude
 
 | function generator | oscilliscope |
 | :-------: | :----------: |
-| ![fig01a](lab07sub/step02/lab07sub-fig01a.jpg) | ![fig02a](lab07sub/step03/lab07sub-fig02a.jpg) |
-| ![fig02b](lab07sub/step03/lab07sub-fig02b.jpg) | ![fig02c](lab07sub/step03/lab07sub-fig02c.jpg) |
+| ![fig01a][1a] | ![fig02a][2a] |
+| ![fig02b][2b] | ![fig02c][2c] |
 
 
 #### 2.
@@ -262,8 +262,8 @@ Increase the frequency until the output is less than half the amplitude of the $
 
 | function generator | oscilliscope |
 | :-------: | :----------: |
-| ![fig01a](lab07sub/step02/lab07sub-fig01a.jpg) | ![fig02a](lab07sub/step03/lab07sub-fig02a.jpg) |
-| ![fig03a](lab07sub/step03/lab07sub-fig03a.jpg) | ![fig03b](lab07sub/step03/lab07sub-fig03b.jpg) |
+| ![fig01a][1a] | ![fig02a][2a] |
+| ![fig03a][3a] | ![fig03b][3b] |
 
 
 #### 3.
@@ -271,7 +271,7 @@ Set the frequency of the signal generator to $$200\:\text{Hz}$$ and verify that 
 
 | function generator | oscilliscope |
 | :-------: | :----------: |
-| ![fig04a](lab07sub/step03/lab07sub-fig04a.jpg) | ![fig04b](lab07sub/step03/lab07sub-fig04b.jpg) |
+| ![fig04a][4a] | ![fig04b][4b] |
 
 
 #### 4-6.
@@ -283,9 +283,9 @@ Increase the frequency further and note frequencies at which there is a noticeab
 
 | function generator | oscilliscope |
 | :-------: | :----------: |
-| ![fig05a](lab07sub/step03/lab07sub-fig05a.jpg) | ![fig05b](lab07sub/step03/lab07sub-fig05b.jpg) |
-| ![fig05c](lab07sub/step03/lab07sub-fig05c.jpg) | ![fig05d](lab07sub/step03/lab07sub-fig05d.jpg) |
-| ![fig05e](lab07sub/step03/lab07sub-fig05e.jpg) | ![fig05f](lab07sub/step03/lab07sub-fig05f.jpg) |
+| ![fig05a][5a] | ![fig05b][5b] |
+| ![fig05c][5c] | ![fig05d][5d] |
+| ![fig05e][5e] | ![fig05f][5f] |
 
 The output starts to transform into more closer form of sinusoidal wave.
 
@@ -295,9 +295,9 @@ Repeat steps 3.3 to 3.6 using a __triangular wave shap__e. How does this result 
 
 | function generator | oscilliscope |
 | :-------: | :----------: |
-| ![fig06a](lab07sub/step03/lab07sub-fig06a.jpg) | ![fig06b](lab07sub/step03/lab07sub-fig06b.jpg) |
-| ![fig06c](lab07sub/step03/lab07sub-fig06c.jpg) | ![fig06d](lab07sub/step03/lab07sub-fig06d.jpg) |
-| ![fig06e](lab07sub/step03/lab07sub-fig06e.jpg) | ![fig06f](lab07sub/step03/lab07sub-fig06f.jpg) |
+| ![fig06a][6a] | ![fig06b][6b] |
+| ![fig06c][6c] | ![fig06d][6d] |
+| ![fig06e][6e] | ![fig06f][6f] |
 
 #### 8-9.
 Set the wave shape back to sinusoidal at $$500\:\text{Hz}$$.
@@ -318,7 +318,7 @@ Int16 h[N] = { // Filter Coefficients
 
 | old `test.cof` | new `test.cof` |
 | :-------: | :----------: |
-| ![fig02a](lab07sub/step03/lab07sub-fig02a.jpg) | ![fig07b](lab07sub/step03/lab07sub-fig07b.jpg) |
+| ![fig02a][2a] | ![fig07b][7b] |
 
 The latency is increased. It's measured to be roughly $$1.2\:\text{ms}$$, whereas the original latency was measured as $$0.9\:\text{ms}$$.
 
@@ -342,8 +342,8 @@ Predict the frequencies that you would expect to have an output amplitude of $$0
 
 | function generator | oscilliscope |
 | :-------: | :----------: |
-| ![fig08a](lab07sub/step04/lab07sub-fig08a.jpg) | ![fig08b](lab07sub/step04/lab07sub-fig08b.jpg) |
-| ![fig08c](lab07sub/step04/lab07sub-fig08c.jpg) | ![fig08d](lab07sub/step04/lab07sub-fig08d.jpg) |
+| ![fig08a][8a] | ![fig08b][8b] |
+| ![fig08c][8c] | ![fig08d][8d] |
 
 #### 4.
 Record the amplitude of the output at other frequencies and create a rough sketch of the frequency response of your filter.
@@ -405,10 +405,10 @@ Find the frequencies above and below the notch frequency where the amplitude is 
 
 | function generator | oscilliscope |
 | :----------------: | :----------: |
-| ![fig09a](lab07sub/step05/lab07sub-fig09a.jpg) | ![fig09b](lab07sub/step05/lab07sub-fig09b.jpg) |
-| ![fig09c](lab07sub/step05/lab07sub-fig09c.jpg) | ![fig09d](lab07sub/step05/lab07sub-fig09d.jpg) |
-| ![fig09e](lab07sub/step05/lab07sub-fig09e.jpg) | ![fig09f](lab07sub/step05/lab07sub-fig09f.jpg) |
-| ![fig09g](lab07sub/step05/lab07sub-fig09g.jpg) | ![fig09h](lab07sub/step05/lab07sub-fig09h.jpg) |
+| ![fig09a][9a] | ![fig09b][9b] |
+| ![fig09c][9c] | ![fig09d][9d] |
+| ![fig09e][9e] | ![fig09f][9f] |
+| ![fig09g][9g] | ![fig09h][9h] |
 
 #### ANSWER TO 4-5.
 The frequency where the output amplitude becomes 0 was, as expected, at $$1000\:\text{Hz}$$.
