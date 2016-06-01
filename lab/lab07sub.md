@@ -223,15 +223,15 @@ Int16 a[N] = {	 		// Filter Coefficients
 ```
 
 ## LAB
-### STEP 2: 
+### STEP 2:
 Setup and Verify Test/Measurement Solution
 
-#### 1. 
+#### 1.
 Set up the signal generator to produce a $$500\:\text{Hz}$$ sinusoidal signal with an amplitude of $$0.5\:\text{V}$$ peak-to-peak. Using a BNC “T” connector, split the output of the signal generator so that it can go to an oscilloscope input as well as the board input.
 
 Run the program and view the input and output signals on the scope. Be sure that the scope sync is set up to trigger on the signal generator signal for both displays.
 
-Verify that the output signal looks like the signal generator signal. From the scope display measure and record the time between the peak of the signal generator signal and the board’s output signal. 
+Verify that the output signal looks like the signal generator signal. From the scope display measure and record the time between the peak of the signal generator signal and the board’s output signal.
 
 This measures the minimum delay between capturing a sample with the ADC and then outputting it through DAC when there is no processing also known as the minimum latency. In real-time DSP solutions, latency is impossible to avoid and so phase shifts between the input and output signals are inevitable. However, as long as the chip is able to complete the necessary signal processing within the given sampling period, the system is said to be “real-time”
 
@@ -242,18 +242,18 @@ This measures the minimum delay between capturing a sample with the ADC and then
 | :----------: | :---: | :----: |
 | ![fig01a](lab07sub/step02/lab07sub-fig01a.jpg) | ![fig01b](lab07sub/step02/lab07sub-fig01b.jpg) | ![fig01c](lab07sub/lab07sub-fig01c.jpg) |
 
-The latency is measured to be roughly $$0.9\:\text{ms}$$ 
+The latency is measured to be roughly $$0.9\:\text{ms}$$
 
 
 ### STEP 3:
-Explore the analog anti-aliasing and anti-imaging filters of 
+Explore the analog anti-aliasing and anti-imaging filters of
 
 #### 1.
 Decrease the frequency of the signal generator signal until the output amplitude is less than half the amplitude of the $$500\:\text{Hz}$$ output. Record this frequency value.
 
 | function generator | oscilliscope |
 | :-------: | :----------: |
-| ![fig01a](lab07sub/step02/lab07sub-fig01a.jpg) | ![fig02a](lab07sub/step02/lab07sub-fig02a.jpg) |
+| ![fig01a](lab07sub/step02/lab07sub-fig01a.jpg) | ![fig02a](lab07sub/step03/lab07sub-fig02a.jpg) |
 | ![fig02b](lab07sub/step03/lab07sub-fig02b.jpg) | ![fig02c](lab07sub/step03/lab07sub-fig02c.jpg) |
 
 
@@ -262,7 +262,7 @@ Increase the frequency until the output is less than half the amplitude of the $
 
 | function generator | oscilliscope |
 | :-------: | :----------: |
-| ![fig01a](lab07sub/step03/lab07sub-fig01a.jpg) | ![fig02a](lab07sub/step03/lab07sub-fig02a.jpg) |
+| ![fig01a](lab07sub/step02/lab07sub-fig01a.jpg) | ![fig02a](lab07sub/step03/lab07sub-fig02a.jpg) |
 | ![fig03a](lab07sub/step03/lab07sub-fig03a.jpg) | ![fig03b](lab07sub/step03/lab07sub-fig03b.jpg) |
 
 
@@ -311,7 +311,7 @@ Change the coefficients in test.cof to all be zero except for the `h[4]` value, 
 
 # define N 5 // Filter Length
 
-Int16 h[N] = { // Filter Coefficients 
+Int16 h[N] = { // Filter Coefficients
 	0, 0, 0, 0, 1,
 };
 ```
@@ -327,7 +327,7 @@ The latency is increased. It's measured to be roughly $$1.2\:\text{ms}$$, wherea
 Explore the five sample moving average FIR filteruding `ave5.cof` file instead of `test.cof` and rebuilding the project.
 
 #### 1.
-Use the version of main.c from the Step 3, but include “`ave5f.cof`” in place of “`test.cof`”. 
+Use the version of main.c from the Step 3, but include “`ave5f.cof`” in place of “`test.cof`”.
 
 ##### `ave5f.cof`
 ```c
@@ -371,12 +371,12 @@ f_T&=8000\:\text{kHz};\\
 &=\frac{\pi}{4};
 \end{align*}
 $$
-We can find the zeros 
+We can find the zeros
 $$
 \begin{align*}
 H(z)&=\frac{\left(z-e^{j\omega_c}\right)\left(z-e^{-j\omega_c}\right)}{\left(z-0.9e^{j\omega_c}\right)\left(z-0.9e^{-j\omega_c}\right)}\\
 &=\frac{z^2-2(0.9)\cos{\left(\omega_c\right)z+(0.9)^2}}{z^2-2\cos{\left(\omega_c\right)z+1}}\\
-&=\frac{z^2-1.2727z+(0.9)^2}}{z^2-1.4141z+1}
+&=\frac{z^2-1.2727z+(0.9)^2}{z^2-1.4141z+1}
 \end{align*}
 $$
 
@@ -386,7 +386,7 @@ $$
 // a notch filter that cuts out 1000 Hz
 
 #define N 3		// Filter Length
- 
+
 float a[N] = {	// Filter Coefficients (poles)
 	1, -1.2728, 0.81
 };
@@ -405,43 +405,43 @@ Find the frequencies above and below the notch frequency where the amplitude is 
 
 | function generator | oscilliscope |
 | :----------------: | :----------: |
-| ![fig09a](lab07sub/step04/lab07sub-fig09a.jpg) | ![fig09b](lab07sub/step04/lab07sub-fig09b.jpg) |
-| ![fig09c](lab07sub/step04/lab07sub-fig09c.jpg) | ![fig09d](lab07sub/step04/lab07sub-fig09d.jpg) |
-| ![fig09e](lab07sub/step04/lab07sub-fig09e.jpg) | ![fig09f](lab07sub/step04/lab07sub-fig09f.jpg) |
-| ![fig09g](lab07sub/step04/lab07sub-fig09g.jpg) | ![fig09h](lab07sub/step04/lab07sub-fig09h.jpg) |
+| ![fig09a](lab07sub/step05/lab07sub-fig09a.jpg) | ![fig09b](lab07sub/step05/lab07sub-fig09b.jpg) |
+| ![fig09c](lab07sub/step05/lab07sub-fig09c.jpg) | ![fig09d](lab07sub/step05/lab07sub-fig09d.jpg) |
+| ![fig09e](lab07sub/step05/lab07sub-fig09e.jpg) | ![fig09f](lab07sub/step05/lab07sub-fig09f.jpg) |
+| ![fig09g](lab07sub/step05/lab07sub-fig09g.jpg) | ![fig09h](lab07sub/step05/lab07sub-fig09h.jpg) |
 
 #### ANSWER TO 4-5.
-The frequency where the output amplitude becomes 0 was, as expected, at $$1000\:\text{Hz}$$. 
+The frequency where the output amplitude becomes 0 was, as expected, at $$1000\:\text{Hz}$$.
 
 And the two frequencies were found were the output amplitude is 50% of the output level at $$1000\:\text{Hz}$$: $$980\:\text{Hz}$$, and $$1020\:\text{Hz}$$. It's roughly a deviation of $$20\:\text{Hz}$$ away from the cutoff frequency.
 
 
 ## QUESTION:
-### 1. 
+### 1.
 What changes would be needed in the program to output the average of the last 15 inputs instead of the last 5?
 
 ### ANSWER to 1.
 The number of inputs are changed, so the only thing needed to change is the macro `N`, which represents the length of the filter coefficient array.
 
 
-### 2. 
+### 2.
 How long would the input queue need to be for an FIR filter to add an echo with a delay of $$0.5\:\text{s}$$?
 
 ### ANSWER to 2.
-As observed from the delay in the STEP 1, the latency is increased, as the number of coefficients that take part in the difference equation increases.  
-when we placed 
+As observed from the delay in the STEP 1, the latency is increased, as the number of coefficients that take part in the difference equation increases.
+when we placed
 
 
-### 3. 
+### 3.
 Why do the square wave and triangle wave change shape as the frequency is increased? At what frequency would you expect them both to look like a sinusoidal signal? Why?
 
 ### ANSWER TO 3.
-Both square wave and triangle wave, later on, change their shapes as the frequency is increased.  
+Both square wave and triangle wave, later on, change their shapes as the frequency is increased.
 
 In the first filter, with coefficents $$h[n]=\{1,\:0,\:0,\:0,\:0\}$$, About at the less than a half of sampling frequency, we noticed the change in shape.
 
-This occurance of losing shapes may be caused by the inherent latency we observed from the experimental result.  
+This occurance of losing shapes may be caused by the inherent latency we observed from the experimental result.
 
-### 4. 
+### 4.
 How would you modify your C code to implement your notch filter in a Direct Form II transpose form?
 

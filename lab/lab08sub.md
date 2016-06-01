@@ -293,3 +293,19 @@ plot(  w-pi, fftshift(abs(H3))  );
 grid on;
 %
 ```
+
+
+## LAB:
+### PART 2: 
+Create a project with Code Composer as you did in the previous laboratory.
+
+Create two coefficient files that set the values for `a` and `b`. One filter should be the second order notch filter from your prelab with a notch at $$666.67\:\text{Hz}$$. The second filter should be the 6th order filter from your prelab that was created using coefficients from the second order notch filter with a notch at $$2000\:\text{Hz}$$. This filter should produce three notches.
+
+Code should be flexible so that you can easily switch between these coefficient files so set N to the appropriate length in each file.
+
+Include your new coefficient file in your `main.c`. Compile and debug your code.
+
+
+
+### PART 3: 
+Explore the performance of the two notch filters.
