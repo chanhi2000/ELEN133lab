@@ -17,4 +17,6 @@
 	* [lab07sub](lab/lab07sub.md)
 * [lab08](lab/lab08.md)
 	* [lab08sub](lab/lab08sub.md)
+* [lab09](lab/lab09.md)
+	* [lab09sub](lab/lab09sub.md)
 

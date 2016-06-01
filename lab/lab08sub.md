@@ -296,7 +296,7 @@ grid on;
 
 
 ## LAB:
-### PART 2: 
+### PART 2:
 Create a project with Code Composer as you did in the previous laboratory.
 
 Create two coefficient files that set the values for `a` and `b`. One filter should be the second order notch filter from your prelab with a notch at $$666.67\:\text{Hz}$$. The second filter should be the 6th order filter from your prelab that was created using coefficients from the second order notch filter with a notch at $$2000\:\text{Hz}$$. This filter should produce three notches.
@@ -305,7 +305,353 @@ Code should be flexible so that you can easily switch between these coefficient 
 
 Include your new coefficient file in your `main.c`. Compile and debug your code.
 
+#### SOLUTION
+Given
+$$
+\begin{align*}
+\omega_{0}&=2\pi\frac{f_0}{f_T}\\
+\omega_{0a}&=2\pi\left(\frac{(666.67)}{8000}\right)\\
+\omega_{0b}&=2\pi\left(\frac{(2000)}{8000}\right)\\
+\end{align*}
+$$
+You can find the transfer function for each
+$$
+\begin{align*}
+H_a(z)&=\frac{\left(z-0.9e^{j\omega_{0a}}\right)\left(z-0.9e^{-j\omega_{0a}}\right)}{z^2}\\
+&=\frac{z^2-2(0.9)\cos{\left(\omega_{0a}\right)}z^{-1}+(0.9)^2}{z^2}\\
+\frac{Y(z)}{X(z)}&=1-0.9(2)\cos{\left(\omega_{0a}\right)}z^{-1}+0.81z^{-2}\\
+Y(z)&=X(z)\left(1-0.9(2)\cos{\left(\omega_{0a}\right)}z^{-1}+0.81z^{-2}\right)\\
+Y(z)&=X(z)-0.9\sqrt{3}X(z)z^{-1}+0.81X(z)z^{-2}\\
+y[n]&=x[n]-0.9\sqrt{3}x[n-1]+0.81x[n-2]\\\\
+H_b(z)&=H_a(z^3)\\
+&=\frac{z^6-2(0.9)\cos{\left(\omega_{0b}\right)}z^3+(0.9)^2}{z^6}\\
+\frac{Y(z)}{X(z)}&=1-0.9(2)\cos{\left(\omega_{0b}\right)}z^{-3}+0.81z^{-6}\\
+Y(z)&=X(z)\left(1-0.9(2)\cos{\left(\omega_{0b}\right)}z^{-3}+0.81z^{-6}\right)\\
+Y(z)&=X(z)-0.9(0)X(z)z^{-3}+0.81X(z)z^{-6}\\
+y[n]&=x[n]+0.81x[n-6]\\\\
+\end{align*}
+$$
 
 
-### PART 3: 
+#### `lab8_notch1.cof`
+```c
+// lab8_notch1.cof Coefficient file
+// a 2nd order notch filter that cuts out 666.67 Hz
+
+#define N 3		// Filter Length
+
+float b[N] = {  // Filter Coefficients (zeros)
+	1, -1.55884, 0.81
+};
+
+float a[N] = {	// Filter Coefficients (poles)
+	1, 0, 0
+};
+```
+#### `lab8_notch2.cof`
+```
+// lab8_notch2.cof Coefficient file
+// a 2nd order notch filter that cuts out 666.67 Hz
+
+#define N 7	// Filter Length
+
+float b[N] = {  // Filter Coefficients (zeros)
+	1, 0, 0, 0, 0, 0, 0
+};
+
+float a[N] = {	// Filter Coefficients (poles)
+	1, 0, 0, 0, 0, 0, 0.81
+};
+```
+
+
+### PART 3:
 Explore the performance of the two notch filters.
+
+#### 1-2.
+Include the appropriate coefficients file to select the second order notch filter.
+
+Set the signal generator up to output a sinusoidal signal. First, listen to the filtered output as you increase the frequency from $$100\:\text{Hz} to $$4000\:\text{Hz}$$ and note frequencies at which the sound amplitude changes. Based on that, select some specific frequencies that will allow you to sketch the frequency response, and record the amplitude of the output at those frequencies. Try to accurately represent the frequency of the notch and the width of the notch.
+
+| function generator | oscilliscope |
+| :-------: | :----------: |
+| ![fig01a](lab08sub/step03/lab08sub-fig01a.jpg) | ![fig01b](lab08sub/step03/lab08sub-fig01b.jpg) |
+| ![fig01c](lab08sub/step03/lab08sub-fig01c.jpg) | ![fig01d](lab08sub/step03/lab08sub-fig01d.jpg) |
+
+
+#### 3.
+Change the signal generator to a square wave output and repeat step 2. Also observe the shape of the waveform for the frequencies from 100 to 700 Hz and note changes as the frequency increases. Describe the output waveform at 667 Hz. What frequency is the main frequency present?
+
+Compare the results of the two filters for square wave inputs. If you wanted to filter out interference from a signal that was not a perfect sinusoidal signal, how would the additional notches of the second filter help?
+
+| function generator | oscilliscope |
+| :-------: | :----------: |
+| ![fig02a](lab08sub/step03/lab08sub-fig02a.jpg) | ![fig02b](lab08sub/step03/lab08sub-fig02b.jpg) |
+| ![fig02c](lab08sub/step03/lab08sub-fig02c.jpg) | ![fig02d](lab08sub/step03/lab08sub-fig02d.jpg) |
+
+The main frequency should appear at $$666.67\:\text{Hz}$$, as shown above.
+
+
+#### 4-5.
+Now, include the coefficient file to use the second filter and repeat steps 2 and 3. Compare the results of the two filters for sinusoidal inputs.
+
+##### SINUSOIDAL WAVE
+
+| function generator | oscilliscope |
+| :-------: | :----------: |
+| ![fig03a](lab08sub/step03/lab08sub-fig03a.jpg) | ![fig03b](lab08sub/step03/lab08sub-fig03b.jpg) |
+| ![fig03c](lab08sub/step03/lab08sub-fig03c.jpg) | ![fig03d](lab08sub/step03/lab08sub-fig03d.jpg) |
+
+##### SQUARE WAVE
+
+| function generator | oscilliscope |
+| :-------: | :----------: |
+| ![fig04a](lab08sub/step03/lab08sub-fig04a.jpg) | ![fig04b](lab08sub/step03/lab08sub-fig04b.jpg) |
+| ![fig04c](lab08sub/step03/lab08sub-fig04c.jpg) | ![fig04d](lab08sub/step03/lab08sub-fig04d.jpg) |
+
+
+### PART 4:
+Make a new program and coefficient files for low pass and high pass filters. In the end, you should have eight coefficient files for the eight combinations of: low pass and high pass, cutoff frequency of $$1200\:\text{Hz}$$ and $$2000\:\text{Hz}$$, and FIR or IIR Butterworth.
+
+### 1.
+MATLAB RESULTS
+
+```matlab
+%% intialize
+clear, clc, clf, cla, close all;
+%
+%% LAB08
+%
+%% PART 04(a)
+%
+fs = 8000;
+N = 10;
+wc1 = 1200/fs;
+wc2 = 2000/fs;
+%
+% 10th order butterworth IIR LPF
+%
+[num1Li, den1Li] = butter(N, wc1)
+[num1Hi, den1Hi] = butter(N, wc1, 'high')
+[H1Li, w] = freqz(num1Li, den1Li, 512, 'whole');
+[H1Hi, w] = freqz(num1Hi, den1Hi, 512, 'whole');
+%
+% 10th order butterworth IIR HPF
+%
+[num2Li, den2Li] = butter(N, wc2)
+[num2Hi, den2Hi] = butter(N, wc2, 'high')
+[H2Li, w] = freqz(num2Li, den2Li, 512, 'whole');
+[H2Hi, w] = freqz(num2Hi, den2Hi, 512, 'whole');
+%
+% plot verification
+%
+figure();
+subplot(2,1,1);
+zplane(num1Li, den1Li);
+subplot(2,1,2);
+plot(w-pi, fftshift(abs(H1Li)));
+title('10th order butterworth IIR LPF with fc=1200');
+%
+figure();
+subplot(2,1,1);
+zplane(num1Hi, den1Hi);
+subplot(2,1,2);
+plot(w-pi, fftshift(abs(H1Hi)));
+title('10th order butterworth IIR HPF with fc=1200');
+%
+figure();
+subplot(2,1,1);
+zplane(num2Li, den2Li);
+subplot(2,1,2);
+plot(w-pi, fftshift(abs(H2Li)));
+title('10th order butterworth IIR LPF with fc=2000');
+%
+figure();
+subplot(2,1,1);
+zplane(num2Hi, den2Hi);
+subplot(2,1,2);
+plot(w-pi, fftshift(abs(H2Hi)));
+title('10th order butterworth HPF with fc=2000');
+%% PART 04(b)
+%
+fs = 8000;
+N = 10;
+wc1 = 1200/fs;
+wc2 = 2000/fs;
+%
+% 10th order butterworth FIR LPF
+%
+num1Lf = fir1(N, wc1, rectwin(N+1), 'noscale' )
+num1Hf = fir1(N, wc1, 'high', rectwin(N+1), 'noscale' )
+den1f = [1 zeros(1, N)];
+[H1Lf, w] = freqz(num1Lf, den1f, 512, 'whole');
+[H1Hf, w] = freqz(num1Hf, den1f, 512, 'whole');
+%
+% 10th order butterworth FIR HPF
+%
+num2Lf = fir1(N, wc2, rectwin(N+1), 'noscale' )
+num2Hf = fir1(N, wc2, 'high', rectwin(N+1), 'noscale' )
+den2f = [1 zeros(1, N)];
+[H2Lf, w] = freqz(num2Lf, den2f, 512, 'whole');
+[H2Hf, w] = freqz(num2Hf, den2f, 512, 'whole');
+%
+% plot verification
+%
+figure();
+subplot(2,1,1);
+zplane(num1Lf, den1f);
+subplot(2,1,2);
+plot(w-pi, fftshift(abs(H1Lf)));
+title('10th order butterworth LPF with fc=1200');
+%
+figure();
+subplot(2,1,1);
+zplane(num1Hf, den1f);
+subplot(2,1,2);
+plot(w-pi, fftshift(abs(H1Hf)));
+title('10th order butterworth LPF with fc=1200');
+%
+figure();
+subplot(2,1,1);
+zplane(num2Lf, den2f);
+subplot(2,1,2);
+plot(w-pi, fftshift(abs(H2Lf)));
+title('10th order butterworth LPF with fc=2000');
+%
+figure();
+subplot(2,1,1);
+zplane(num2Hf, den2f);
+subplot(2,1,2);
+plot(w-pi, fftshift(abs(H2Hf)));
+title('10th order butterworth LPF with fc=2000');
+```
+
+#### OUTPUT:
+##### coefficients IIR
+###### for `wc1 = 1200/fs`
+- `num1Li`
+
+| `num1Li` | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| :----: | - | - | - | - | - | - | - | - | - | -- | -- | 
+| | 0.0014e-4 | 0.0138e-4 | 0.0623e-4 | 0.1662e-4 | 0.2908e-4 | 0.3489e-4 | 0.2908e-4 | 0.1662e-4 | 0.0623e-4 | 0.0138e-4 | 0.0014e-4 |
+
+- `den1Li`
+
+| `num1Li` | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| :----: | - | - | - | - | - | - | - | - | - | -- | -- | 
+| | 1 | -6.9894 | 22.3231 | -42.8246 | 54.5704 | -48.2085 | 29.8728 | -12.8107 | 3.6362  | -0.6165 | 0.0474 |
+
+![fig01a](lab08sub/step04/lab08sub-fig01a.png)
+
+- `num1Hi`
+
+| `num1Hi` | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| :----: | - | - | - | - | - | - | - | - | - | -- | -- | 
+| | 0.2177 | -2.1768 | 9.7954 | -26.1210 |  45.7118 | -54.8542 | 45.7118 | -26.1210 | 9.7954 | -2.1768 | 0.2177 |
+
+- `den1Hi`
+
+| `den1Hi` | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| :----: | - | - | - | - | - | - | - | - | - | -- | -- | 
+| | 1 | -6.9894 | 22.3231 | -42.8246 | 54.5704 | -48.2085 | 29.8728 | -12.8107 | 3.6362 | -0.6165 | 0.0474 |
+
+![fig01b](lab08sub/step04/lab08sub-fig01b.png)
+
+###### for `wc2 = 2000/fs`
+- `num2Li`
+
+| `num2Li` | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| :----: | - | - | - | - | - | - | - | - | - | -- | -- | 
+| | 0 | 0.0001 | 0.0005 | 0.0013 | 0.0023 | 0.0028 | 0.0023 | 0.0013 | 0.0005 | 0.0001 | 0 |
+
+- `den2Li`
+
+| `num2Li` | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| :----: | - | - | - | - | - | - | - | - | - | -- | -- | 
+| | 1 | -4.9870 | 11.9364 | -17.7424 | 17.9732 | -12.8862 |  6.5932 | -2.3691 | 0.5706 | -0.0830 | 0.0055 |
+
+![fig01c](lab08sub/step04/lab08sub-fig01c.png)
+
+
+- `num2Hi`
+
+| `num2Hi` | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| :----: | - | - | - | - | - | - | - | - | - | -- | -- | 
+| | 0.0744 | -0.7436 | 3.3463 | -8.9234 | 15.6160 | -18.7392 | 15.6160 | -8.9234 | 3.3463 | -0.7436 | 0.0744 |
+
+- `den2Hi`
+
+| `den2Hi` | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| :----: | - | - | - | - | - | - | - | - | - | -- | -- | 
+| | 1 | -4.9870 | 11.9364 | -17.7424 | 17.9732 | -12.8862 |  6.5932 | -2.3691 | 0.5706 | -0.0830 | 0.0055 |
+
+![fig01d](lab08sub/step04/lab08sub-fig01d.png)
+
+##### coefficients FIR
+###### for `wc1 = 1200/fs`
+- `num1Lf`
+
+| `num1Lf` | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| :----: | - | - | - | - | - | - | - | - | - | -- | -- | 
+| | 0.0450 | 0.0757 | 0.1048 | 0.1288 | 0.1445 | 0.1500 | 0.1445 | 0.1288 | 0.1048 | 0.0757 | 0.0450 |
+
+![fig02a](lab08sub/step04/lab08sub-fig02a.png)
+
+- `num1Hf`
+
+| `num1Hf` | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| :----: | - | - | - | - | - | - | - | - | - | -- | -- | 
+| | 1 | -0.0450 | -0.0757 | -0.1048 | -0.1288 | -0.1445 | 0.8500 | -0.1445 |  -0.1288 | -0.1048 | -0.0757 | -0.0450 |
+
+![fig02b](lab08sub/step04/lab08sub-fig02b.png)
+
+###### for `wc2 = 2000/fs`
+- `num2Lf`
+
+| `num2Lf` | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| :----: | - | - | - | - | - | - | - | - | - | -- | -- | 
+| | -0.0450 | 0 | 0.0750 | 0.1592 | 0.2251 | 0.2500 | 0.2251 | 0.1592 | 0.0750 | 0 | -0.0450 |
+
+![fig02c](lab08sub/step04/lab08sub-fig02c.png)
+
+- `num2Hf`
+
+| `num2Hf` | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| :----: | - | - | - | - | - | - | - | - | - | -- | -- | 
+| | 0.0450 | 0 | -0.0750 | -0.1592 | -0.2251 | -0.2500 | -0.2251 | -0.1592 | -0.0750 | 0 | 0.0450 |
+
+![fig02d](lab08sub/step04/lab08sub-fig02d.png)
+
+- `num2Hi`
+
+| `num2Hi` | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| :----: | - | - | - | - | - | - | - | - | - | -- | -- | 
+| | 0.0744 | -0.7436 | 3.3463 | -8.9234 | 15.6160 | -18.7392 | 15.6160 | -8.9234 | 3.3463 | -0.7436 | 0.0744 |
+
+- `den2Hi`
+
+| `den2Hi` | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| :----: | - | - | - | - | - | - | - | - | - | -- | -- | 
+| | 1 | -4.9870 | 11.9364 | -17.7424 | 17.9732 | -12.8862 |  6.5932 | -2.3691 | 0.5706 | -0.0830 | 0.0055 |
+
+![fig01d](lab08sub/step04/lab08sub-fig01d.png)
+
+
+### 2-3.
+Make a new program based on your previous program for the notch filters to allow the code to work simply by selecting the appropriate coefficients file.
+
+Run your new program eight times (once with each coefficients file) with signal generator input and verify that that the filters are performing correctly. Use both sinusoidal inputs and square wave inputs. What are the differences between the FIR and IIR filters in attenuating frequencies above the cutoff frequency? What are the difference between the FIR and IIR filters on the wave shape of the square wave?
+
+## QUESTIONS:
+
+### 1.
+For the eight filters in Part 4, plot pole-zero diagrams and frequency responses using MATLAB. What is the difference between the high pass and low pass IIR filter locations of the poles and zeroes? What is the difference between the high pass and low pass FIR filter locations of the zeroes? For the FIR filter, how are the b coefficients different for the low and high pass filters?
+
+### 2.
+How would you design a notch filter to filter out all periodic signals at a fundamental frequency of 500 Hz with only odd harmonics?
+
+__Submit the answers to the questions above and the questions in the laboratory procedure as well as the data and sketches requested in the procedure. Submit a listing of C code instructions and your coefficients for Parts 3-5.__
+
+
+
+

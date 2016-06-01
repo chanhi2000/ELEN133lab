@@ -1,32 +1,10 @@
-# lab09
+# lab09sub
 Generating Periodic Signals and Modulation with Sinusoidal Signals
 
 ## OBJECTIVES:
-In this laboratory, we will generate a sinusoidal signal output and then implement simple modulation with a cosine wave. For a single frequency input, this creates two different output frequencies which are the sum and difference frequencies. For a general audio signal it creates an output that is the sum of the input shifted up and the input shifted down by the cosine frequency.
-
-## BACKGROUND:
-Several methods can be used to generate a sinusoidal waveform. Four are briefly described here.
-- A normalized frequency $$0\leq\omega_0<2\pi$$ can be specified and then a general function to compute arbitrary cosine values forcos(ω0n) can compute each output sample. This may require too much computation for each sample in a real-time system implementation.
-- The $$z$$-transform for a cosine function multiplied by a unit step function, 
-$$
-h[n]=\cos{\left(\omega_0n\right)}\mu[n]
-$$
-is 
-$$
-H(z)=\frac{1−\cos{\left(\omega_0\right)}z^{-1}}{1−2\cos{\left(\omega_0\right)}z^{-1}+z^{-2}}
-$$
-Since the impulse response of this second order filter would be $$h[n]$$, each output would only require the computation of a second order system. After two steps of initialization, the difference equation for this system function implements the trigonometric identity:
-$$
-\cos{\left(\omega_0n\right)}=2\cos{\left(\omega_0\right)}\cos{\left(\omega_0(n-1)\right)}+\cos{\left(\omega_0(n-2)\right)}.
-$$
-- Alternatively, new values of both $$\cos{\left(\omega_0n\right)}$$ and $$\sin{\left(\omega_0n\right)}$$ could be updated from the previous values $$\cos{\left(\omega_0(n-1)\right)}$$ and $$\sin{\left(\omega_0(n-1)\right)}$$ at each iteration using the equations below. To implement this rotation, only the values of $$\cos{\left(\omega_0\right)}$$ and $$\sin{\left(\omega_0\right)}$$ are needed. Each new set of values would require 4 multiplies.
-$$
-\begin{align*}
-\cos{\left(\omega_0n\right)}&=\cos{\left(\omega_0\right)}\cos{\left(\omega_0(n-1)\right)}-\sin{\left(\omega_0\right)}\sin{\left(\omega_0(n-1)\right)}\\
-\sin{\left(\omega_0n\right)}&=\sin{\left(\omega_0\right)}\cos{\left(\omega_0(n-1)\right)}-\cos{\left(\omega_0\right)}\sin{\left(\omega_0(n-1)\right)}
-\end{align*}
-$$
-- A table of sampled values of a single period of a sine could be stored and an index into that table could be used to retrieve values close to the desired value. This method will be tested in the Prelab. Interpolation from the table and floating point time increments can improve accuracy.
+- generate a sinusoidal signal output and then implement simple modulation with a cosine wave.
+	- For a single frequency input, this creates two different output frequencies which are the sum and difference frequencies.
+	- For a general audio signal it creates an output that is the sum of the input shifted up and the input shifted down by the cosine frequency.
 
 ## PRELAB
 Frequency control from table look-up:
@@ -34,7 +12,7 @@ Frequency control from table look-up:
 ### TEST 1:
 To simulate real-time operation, you will create an array, which holds a complete output sequence, and then you will listen to it in MATLAB with sound. Write and test a program that will do the following;
 
--Let N be a variable that controls the length of a single cycle of a sampled sine so that `sn=sin( (0:N-1)*2*pi/N)`. In a real-time program, this could be computed in the initialization part of the program. Start with `N=128`.
+-Let `N` be a variable that controls the length of a single cycle of a sampled sine so that `sn=sin( (0:N-1)*2*pi/N)`. In a real-time program, this could be computed in the initialization part of the program. Start with `N=128`.
 - Let `FT=8000` be the sampling frequency.
 - Let `tone_d=0.5` be the tone duration in seconds. The number of output samples will then be `M=(tone_d*FT)`.
 - Let frequency=`440` be the desired output frequency. Compute `f_step`, the __floating point value__ of the increment to the index that would advance through the sine table at the correct rate to make this desired frequency output. Show this computation in your preLab report.
@@ -42,7 +20,7 @@ To simulate real-time operation, you will create an array, which holds a complet
 - Generate `M` output samples by doing the following;
 	- Compute an integer index by rounding the sine index and accessing that value in the sine table. Save it as the next element in the output array.
 	- Increment the time index. If it exceeds `M`, stop generating output samples. Otherwise add `f_step` to the floating point sine index.
-	- If sine index > N + 0.5, subtract `N` from sine index. 
+	- If sine index > N + 0.5, subtract `N` from sine index.
 	- Continue.
 - When the outputs have been generated, plot the output waveform and use sound to listen to the result. If it does not look line a sinusoidal signal or sound like the correct frequency, debug the code and try again.
 - When you have the `m`-file working, compare the result for `N=128` with the result for `N=16`.
@@ -65,10 +43,10 @@ To simulate real-time operation, you will create an array, which holds a complet
 | Note | Frequency |
 | :--: | :-------: |
 | A | 220.00 |
-| | 233.08 | 
-| B | 246.94 | 
-| C | 261.63 | 
-| | 277.18 | 
+| | 233.08 |
+| B | 246.94 |
+| C | 261.63 |
+| | 277.18 |
 | D | 293.66 |
 | | 311.13 |
 | E | 329.63 |
@@ -92,13 +70,13 @@ To simulate real-time operation, you will create an array, which holds a complet
 
 
 ## QUESTIONS:
-### 1. 
+### 1.
 What are the benefits of increasing the length of the sine table? What are the drawbacks?
 
-### 2. 
+### 2.
 Here we used a floating point value for f_step and then used a rounded value of the sine index for the table index. Compare that to simply using a rounded value of `f_step` and always doing an integer update to sine index. Again, what would be the benefits and drawbacks?
 
-### 3. 
+### 3.
 Could this method be used with waveshapes other than a sinusoidal waveshape? Explain.
 
 __Submit the answers to the questions and requested m-file listings and tables of step values.__
