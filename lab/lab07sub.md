@@ -445,3 +445,44 @@ This occurance of losing shapes may be caused by the inherent latency we observe
 ### 4.
 How would you modify your C code to implement your notch filter in a Direct Form II transpose form?
 
+
+
+
+[1a]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step02/lab07sub-fig01a.JPG
+[1b]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step02/lab07sub-fig01b.JPG 
+[1c]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step02/lab07sub-fig01c.JPG
+[1d]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step02/lab07sub-fig01d.JPG
+[1e]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step02/lab07sub-fig01e.JPG
+[2a]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig02a.JPG
+[2b]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig02b.JPG 
+[2c]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig02c.JPG
+[3a]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig03a.JPG
+[3b]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig03b.JPG
+[4a]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig04a.JPG
+[4b]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig04b.JPG
+[5a]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig05a.JPG
+[5b]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig05b.JPG 
+[5c]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig05c.JPG
+[5d]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig05d.JPG
+[5e]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig05e.JPG
+[5f]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig05f.JPG
+[6a]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig06a.JPG
+[6b]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig06b.JPG 
+[6c]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig06c.JPG
+[6d]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig06d.JPG
+[6e]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig06e.JPG
+[6f]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig06f.JPG
+[7a]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig07a.JPG
+[7b]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step03/lab07sub-fig07b.JPG
+[8a]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step04/lab07sub-fig08a.JPG
+[8b]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step04/lab07sub-fig08b.JPG 
+[8c]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step04/lab07sub-fig08c.JPG
+[8d]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step04/lab07sub-fig08d.JPG
+[9a]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09a.JPG
+[9b]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09b.JPG 
+[9c]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09c.JPG
+[9d]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09d.JPG
+[9e]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09e.JPG
+[9f]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09f.JPG
+[9g]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09g.JPG
+[9h]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09h.JPG
