@@ -5,7 +5,7 @@ Low Pass and Multiple Notch Filters Using the TI TMS320C5505
 ## OBJECTIVES:
 - Explore the design of multiple band and multiple notch filters derived from
 prototype filters.
-- Compare FIR and IIR filters using sinusoidal and square wave inputs. 
+- Compare FIR and IIR filters using sinusoidal and square wave inputs.
 - Test these filters with real time signals.
 
 
@@ -67,7 +67,7 @@ z&=\pm{j}(0.9)^{\tfrac{1}{3}},\:(0.9)^{\tfrac{1}{3}}e^{\pm{j}\tfrac{\pi}{6}},\:(
 \end{align*}
 $$
 
-#### PLOT RESULT 
+#### PLOT RESULT
 ![fig02](lab08sub/lab08pre/lab08pre-fig02.png)
 
 
@@ -93,7 +93,7 @@ z&=\pm{j}(0.9)^{\tfrac{1}{4}},\:(0.9)^{\tfrac{1}{4}}e^{\pm{j}\tfrac{\pi}{8}},\:(
 \end{align*}
 $$
 
-#### PLOT RESULT 
+#### PLOT RESULT
 ![fig03](lab08sub/lab08pre/lab08pre-fig03.png)
 
 
@@ -110,7 +110,7 @@ $$
 \end{align*}
 $$
 
-#### PLOT RESULT 
+#### PLOT RESULT
 ![fig04](lab08sub/lab08pre/lab08pre-fig04.png)
 
 
@@ -122,19 +122,19 @@ Type "`help butter`" in MATLAB to see how to get coefficients for a Butterworth 
 The coefficients for poles (`b`) and zeros (`a`) are the output of the MATLAB function `butter(N, w)`, where `N` is the order of the filter and `w` are your normalized cutoff frequency.
 
 
-#### PLOT RESULT 
+#### PLOT RESULT
 ![fig05](lab08sub/lab08pre/lab08pre-fig05.png)
 
 
 
-### 6. 
+### 6.
 Using the filter of Step 5, find the coefficients of a 6th order filter $$H_3(z)=H_0(z^3)$$ as you did in Step 2. Plot the frequency response and the pole/zero plot for this filter.
 
 ### ANSWER 6.
 Like the exercise above, we need to observe that we have been making __comb filter__, *i.e.* in terms of coefficients, we are zero-padding to increase the order.
 
 
-#### PLOT RESULT 
+#### PLOT RESULT
 ![fig06](lab08sub/lab08pre/lab08pre-fig06.png)
 
 
@@ -148,7 +148,7 @@ When the order was increased from 2nd to 6th, we expect to see zeros evenly dist
 In 8th order, we expect to see the same effect, *i.e.* 8 zeros evenly distributed along the unit circle.
 
 
-### 2. 
+### 2.
 How does the width of the notch at $$666.67\:\text{Hz}$$ in Step 4 compare to the width of the notch at that frequency in Step 2? Why?
 
 
@@ -160,12 +160,12 @@ Width of the notch was diminisehd when the cutoff frequency decreased from $$200
 If a notch filter were needed to remove an interfering sinusoidal signal at $$666.67\:\text{Hz}$$, would the filters from Step 2 and Step 3 give approximately similar results? How would your answer change if the interfering signal were a non-sinusoidal periodic signal with a repetition frequency of 666.67 Hz? Consider, for example, a square wave interference.
 
 ### ANSWER to Q3.
-No, The creation of comb filter doesn't guarantee the removal of interfering signal at lower frequency.  Especially, we have to be very selective about which frequency component to cut off.  
+No, The creation of comb filter doesn't guarantee the removal of interfering signal at lower frequency.  Especially, we have to be very selective about which frequency component to cut off.
 
 If the original filter is to cut off frequency component at $$666.67\:\text{Hz}$$. The result from step 2 can do the same job, but the result from step 3 can't.  The transformation changed the notch we selectd.
 
 
-### 4. 
+### 4.
 Explain the frequency response of the 6th order filter in Step 6.
 
 
@@ -185,7 +185,7 @@ clear, clc, clf, cla, close all;
 %% PRELAB
 %
 %% 1.
-% 
+%
 % create filter H_0(z) @ f0=2000 Hz
 %
 f0=2000;
@@ -237,8 +237,8 @@ subplot(2,1,2);
 plot(  w-pi, fftshift(abs(H4))  );
 grid on;
 %
-%% 4. 
-% 
+%% 4.
+%
 % create filter H_0(z) @ f0=666.67 Hz
 %
 f0=666.67;
