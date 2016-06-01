@@ -371,7 +371,7 @@ Explore the performance of the two notch filters.
 #### 1-2.
 Include the appropriate coefficients file to select the second order notch filter.
 
-Set the signal generator up to output a sinusoidal signal. First, listen to the filtered output as you increase the frequency from $$100\:\text{Hz} to $$4000\:\text{Hz}$$ and note frequencies at which the sound amplitude changes. Based on that, select some specific frequencies that will allow you to sketch the frequency response, and record the amplitude of the output at those frequencies. Try to accurately represent the frequency of the notch and the width of the notch.
+Set the signal generator up to output a sinusoidal signal. First, listen to the filtered output as you increase the frequency from $$100\:\text{Hz}$$ to $$4000\:\text{Hz}$$ and note frequencies at which the sound amplitude changes. Based on that, select some specific frequencies that will allow you to sketch the frequency response, and record the amplitude of the output at those frequencies. Try to accurately represent the frequency of the notch and the width of the notch.
 
 | function generator | oscilliscope |
 | :-------: | :----------: |
