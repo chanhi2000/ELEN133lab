@@ -654,4 +654,11 @@ __Submit the answers to the questions above and the questions in the laboratory 
 
 
 
-
+[1a]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09a.JPG
+[1b]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09b.JPG 
+[1c]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09c.JPG
+[1d]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09d.JPG
+[2a]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09e.JPG
+[2b]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09f.JPG
+[2c]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09g.JPG
+[2d]: https://raw.githubusercontent.com/chanhi2000/ELEN133lab/master/lab/lab07sub/step05/lab07sub-fig09h.JPG
